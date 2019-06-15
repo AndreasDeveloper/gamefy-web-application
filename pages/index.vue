@@ -3,6 +3,7 @@
     <TopNav />
     <SideNav />
     <div class="main-content">
+      <!-- HEADER | START -->
       <div class="header">
         <div class="posted-by-wrap">
           <img src="../static/images/user.jpg">
@@ -18,6 +19,10 @@
           <a href="#" class="btn-readMore article-info-wrap__button">Read More</a>
         </div>
       </div>
+      <!-- HEADER | END -->
+      <!-- POPULAR AUTHORS | START -->
+      <PopularAuthors />
+      <!-- POPULAR AUTHORS | END -->
     </div>
   </div>
 </template>
@@ -26,13 +31,15 @@
 // Importing Components
 import SideNav from '../components/SideNav';
 import TopNav from '../components/TopNav';
+import PopularAuthors from '../components/PopularAuthors';
 
 export default {
   name: 'homePage',
   // Components
   components: {
     SideNav,
-    TopNav
+    TopNav,
+    PopularAuthors
   },
   // Head Tags
   head() {
@@ -67,7 +74,7 @@ export default {
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 90vh;
+  min-height: 100vh;
   order: 2;
   margin-left: 7rem;
 }
@@ -86,7 +93,7 @@ export default {
   flex-direction: column;
   justify-content: space-around;
   align-items: flex-start;
-  @media only screen and (max-width: $bp-small) { margin: 4rem 10rem 4rem 2rem; }
+  @media only screen and (max-width: $bp-small) { margin: 4rem 4rem; }
 }
 // Posted By Tab
 .posted-by-wrap {
@@ -97,7 +104,7 @@ export default {
   position: relative;
   display: flex;
   align-items: center;
-  @media only screen and (max-width: $bp-small) { width: 45%; }
+  @media only screen and (max-width: $bp-small) { width: 65%; }
   // Image
   img {
     width: 4.5rem;
@@ -113,20 +120,21 @@ export default {
   background-color: $color-white;
   border-radius: 1rem;
   height: 28rem;
-  width: 65rem;
+  width: 60rem;
   margin-left: 2rem;
   margin-top: 10rem;
   padding-left: 2rem;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  @media only screen and (max-width: $bp-small) { width: 40rem; margin-top: 8rem; }
+  @media only screen and (max-width: $bp-small) { width: 25rem; margin-top: 8rem; }
   // Article Title
   &__article-title {
     font-weight: 400;
     font-size: 2.5rem;
-    width: 80%;
-    @media only screen and (max-width: $bp-small) { font-size: 2rem; }
+    width: 95%;
+    margin-top: .5rem;
+    @media only screen and (max-width: $bp-small) { font-size: 1.6rem; }
   }
   // Divider 
   &__divider {
@@ -140,9 +148,9 @@ export default {
     color: $color-font-1;
     font-weight: 300;
     font-size: 1.8rem;
-    width: 80%;
+    width: 95%;
     margin-top: -1rem;
-    @media only screen and (max-width: $bp-small) { font-size: 1.4rem; }
+    @media only screen and (max-width: $bp-small) { font-size: 1.2rem; }
   }
 }
 </style>

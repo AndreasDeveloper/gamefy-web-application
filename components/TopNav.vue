@@ -35,7 +35,7 @@ export default {
     height: 8rem;
     order: 2;
     width: 100%;
-    padding: 0 6rem;
+    padding: 0 12rem;
     margin-left: 3rem;
 }
 

@@ -9,8 +9,7 @@
 @import '../components/sass/_mixins.scss';
 
 html {
-  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'Josefin Sans', sans-serif;
   font-size: 62.5%;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;

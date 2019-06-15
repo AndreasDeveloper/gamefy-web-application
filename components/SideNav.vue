@@ -36,7 +36,7 @@ export default {
     justify-content: space-between;
     align-items: center;
     font-size: 3.8rem;
-    position: absolute;
+    position: fixed;
 }
 
 // All Wraps and Icons
