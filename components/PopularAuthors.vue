@@ -1,6 +1,6 @@
 <template>
-    <div class="popular-authors-wrap">
-        <div class="pa-header">
+    <div class="section-wrap-standard">
+        <div class="section-header-standard">
             <h2>Popular Authors</h2>
             <a href="#" class="btn-viewAll">View All</a>
         </div>
@@ -43,27 +43,8 @@ export default {
 
 <style lang="scss" scoped>
 // Importing SASS Components
-@import './sass/_variables.scss';
-@import './sass/_buttons.scss';
-@import './sass/_mixins.scss';
+@import './sass/main.scss';
 
-.popular-authors-wrap {
-    min-height: 60vh;
-    display: flex;
-    flex-direction: column;
-    margin: 3rem 10rem;
-    @media only screen and (max-width: $bp-small) { margin: 3rem 5rem; }
-}
-// Popular Authors Header Wrapper
-.pa-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 3rem;
-    h2 { font-weight: 300; font-size: 3.5rem; text-transform: uppercase; color: $color-font-2; }
-    a { margin-right: 8rem; }
-    @media only screen and (max-width: $bp-small) { margin: 0; margin-bottom: 3rem; margin-right: 5rem; flex-direction: column; width: 110%; }
-}
 // Popular Authors Cards Wrapper
 .popular-authors-cards-wrap {
     display: flex;
@@ -81,6 +62,9 @@ export default {
     padding: 3rem 0;
     margin-right: 8rem;
     width: 100%;
+    // - Media Queries - \\
+    @media only screen and (max-width: $bp-largest-5) { margin-right: 2rem; }
+    @media only screen and (max-width: $bp-medium) { margin-right: 2rem; padding: 3rem 1rem; }
     @media only screen and (max-width: $bp-small) { margin-bottom: 4rem; padding: 2rem; margin-right: 0; }
     // Genre
     h3 { font-weight: 300; font-size: 2rem; margin-bottom: 1rem; }

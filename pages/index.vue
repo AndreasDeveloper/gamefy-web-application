@@ -1,7 +1,6 @@
 <template>
-  <div class="container">
-    <TopNav />
-    <SideNav />
+  <div>
+
     <div class="main-content">
       <!-- HEADER | START -->
       <div class="header">
@@ -20,9 +19,14 @@
         </div>
       </div>
       <!-- HEADER | END -->
+
       <!-- POPULAR AUTHORS | START -->
       <PopularAuthors />
       <!-- POPULAR AUTHORS | END -->
+      
+      <!-- RECENT ARTICLES | START -->
+      <RecentArticles />
+      <!-- RECENT ARTICLES | END -->
     </div>
   </div>
 </template>
@@ -32,6 +36,7 @@
 import SideNav from '../components/SideNav';
 import TopNav from '../components/TopNav';
 import PopularAuthors from '../components/PopularAuthors';
+import RecentArticles from '../components/RecentArticles';
 
 export default {
   name: 'homePage',
@@ -39,7 +44,8 @@ export default {
   components: {
     SideNav,
     TopNav,
-    PopularAuthors
+    PopularAuthors,
+    RecentArticles
   },
   // Head Tags
   head() {
@@ -59,25 +65,7 @@ export default {
 
 <style lang="scss" scoped>
 // Importing SASS Components
-@import '../components/sass/_variables.scss';
-@import '../components/sass/_buttons.scss';
-@import '../components/sass/_mixins.scss';
-
-// Container
-.container {
-  display: flex;
-  flex-direction: column;
-}
-// Main Content
-.main-content {
-  background-color: $color-background-1;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  min-height: 100vh;
-  order: 2;
-  margin-left: 7rem;
-}
+@import '../components/sass/main.scss';
 
 // Header
 .header {
@@ -104,6 +92,9 @@ export default {
   position: relative;
   display: flex;
   align-items: center;
+  // - Media Queries - \\
+    @media only screen and (max-width: $bp-largest-5) { width: 25%; }
+  @media only screen and (max-width: $bp-medium) { width: 30%; }
   @media only screen and (max-width: $bp-small) { width: 65%; }
   // Image
   img {
@@ -127,6 +118,9 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  // - Media Queries - \\
+  @media only screen and (max-width: $bp-largest-5) { margin-top: 50rem; }
+  @media only screen and (max-width: $bp-medium) { margin-top: 35rem; }
   @media only screen and (max-width: $bp-small) { width: 25rem; margin-top: 8rem; }
   // Article Title
   &__article-title {

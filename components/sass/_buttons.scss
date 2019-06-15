@@ -1,5 +1,6 @@
 // Importing mixins
 @import './mixins';
+@import './variables';
 
 // Article in Header Button
 .btn-readMore {
@@ -15,6 +16,7 @@
     width: 22%; 
     text-align: center;
     text-transform: uppercase;
+    // - Media Queries - \\
     @media only screen and (max-width: $bp-small) { width: 50%; }
 }
 
@@ -32,6 +34,9 @@
     font-size: 1.8rem;
     font-weight: 300;
     width: 12%;
+    // - Media Queries - \\
+    @media only screen and (max-width: $bp-largest-5) { width: 15%; }
+    @media only screen and (max-width: $bp-medium) { width: 20%; }
     @media only screen and (max-width: $bp-small) { width: 50%; }
 }
 
@@ -49,4 +54,21 @@
     text-align: center;
     width: 32%;
     i { margin-left: .5rem; }
+    // - Media Queries - \\
+    @media only screen and (max-width: $bp-medium) { width: 40%; }
+}
+
+// Author Button Blue
+.btn-author {
+    display: inline-block;
+    text-decoration: none;
+    text-transform: uppercase;
+    text-align: center;
+    padding: .8rem;
+    color: $color-white;
+    background-color: $color-primary;
+    border-radius: 10rem;
+    font-size: 1.2rem;
+    font-weight: 300;
+    width: 35%;
 }
