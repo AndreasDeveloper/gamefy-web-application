@@ -17,5 +17,6 @@
     }
     // - Media Queries - \\
     @media only screen and (max-width: $bp-small) { margin: 0; margin-bottom: 3rem; margin-right: 5rem; flex-direction: column; width: 100%; }
+    @media only screen and (max-width: $bp-vsmall-3b) { width: 115%; }
     @media only screen and (max-width: $bp-vsmall-4) { width: 110%; }
 }

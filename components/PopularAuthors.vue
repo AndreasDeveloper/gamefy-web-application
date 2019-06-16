@@ -5,7 +5,17 @@
             <a href="#" class="btn-viewAll">View All</a>
         </div>
         <div class="popular-authors-cards-wrap">
-            <div class="pa-card">
+
+            <div class="pa-card" v-for="author in popularAuthors" :key="author.id">
+                <h3>{{ author.genre }}</h3>
+                <h4>{{ author.followers }} Followers</h4>
+                <img v-bind:src="author.authorImage" alt="Popular Author Image" class="pa-card__image">
+                <h2>{{ author.authorName }}</h2>
+                <p>{{ author.shortBio }}</p>
+                <a href="#" class="btn-more">More <i class="icon ion-ios-arrow-forward"></i></a>
+            </div>
+
+            <!-- <div class="pa-card">
                 <h3>IT / TECH</h3>
                 <h4>667 Followers</h4>
                 <img src="../static/images/user.jpg" alt="Popular Author Image" class="pa-card__image">
@@ -30,14 +40,45 @@
                 <h2>Alex Ripley</h2>
                 <p>Alex is marketing expert working with tech gigants</p>
                 <a href="#" class="btn-more">More <i class="icon ion-ios-arrow-forward"></i></a>
-            </div>
+            </div> -->
         </div>
     </div>
 </template>
 
 <script>
 export default {
-    name: 'PopularAuthors'
+    name: 'PopularAuthors',
+    // Data
+    data() {
+        return {
+            popularAuthors: [
+                {
+                    id: 1,
+                    genre: 'IT / TECH',
+                    followers: 667,
+                    authorImage: require(`@/assets/images/user.jpg`),
+                    authorName: 'John Doe',
+                    shortBio: 'John is a software engineer and cloud expert'
+                },
+                {
+                    id: 2,
+                    genre: 'IT / TECH',
+                    followers: 530,
+                    authorImage: require(`@/assets/images/user-2.jpg`),
+                    authorName: 'Andrew Dough',
+                    shortBio: 'Andrew is a web designer and web developer'
+                },
+                {
+                    id: 3,
+                    genre: 'MARKETING / SALES',
+                    followers: 500,
+                    authorImage: require(`@/assets/images/user-3.jpg`),
+                    authorName: 'Alex Ripley',
+                    shortBio: 'Alex is marketing expert working with tech gigants'
+                }
+            ]
+        }
+    }
 };
 </script>
 

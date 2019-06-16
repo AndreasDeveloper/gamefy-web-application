@@ -7,7 +7,7 @@
             </form>
         </div>
         <div class="logo-wrap">
-            <img src="../static/images/gamefy-logo.png">
+            <img src="~assets/images/gamefy-logo.png">
         </div>
         <!-- User State depends on if either user is logged in or not. If not logged in, buttons will be shown, otherwise, message is displayed -->
         <div class="user-state-wrap">
@@ -86,6 +86,7 @@ export default {
 
 // User State Wrapper
 .user-state-wrap {
+    cursor: pointer;
     h2 {
         color: $color-font-1;
         font-size: 1.8rem;

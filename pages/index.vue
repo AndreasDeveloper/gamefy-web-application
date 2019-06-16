@@ -5,7 +5,7 @@
       <!-- HEADER | START -->
       <div class="header">
         <div class="posted-by-wrap">
-          <img src="../static/images/user.jpg">
+          <img src="~assets/images/user.jpg">
           <h2>Posted by John Doe</h2>
         </div>
         <div class="article-info-wrap">
@@ -69,7 +69,7 @@ export default {
 
 // Header
 .header {
-  background-image: url(../static/images/hero.jpg);
+  background-image: url(~assets/images/hero.jpg);
   background-position: center;
   background-size: cover;
   height: 60vh;
@@ -93,9 +93,11 @@ export default {
   display: flex;
   align-items: center;
   // - Media Queries - \\
-    @media only screen and (max-width: $bp-largest-5) { width: 25%; }
+  @media only screen and (max-width: $bp-desktop) { width: 20%; }
+  @media only screen and (max-width: $bp-largest-5) { width: 25%; }
   @media only screen and (max-width: $bp-medium) { width: 30%; }
-  @media only screen and (max-width: $bp-small) { width: 65%; }
+  @media only screen and (max-width: $bp-small) { width: 55%; }
+  @media only screen and (max-width: $bp-vsmall-3b) { width: 65%; }
   // Image
   img {
     width: 4.5rem;
@@ -119,6 +121,7 @@ export default {
   flex-direction: column;
   justify-content: space-around;
   // - Media Queries - \\
+  @media only screen and (max-width: $bp-desktop) { margin-top: 2rem; }
   @media only screen and (max-width: $bp-largest-5) { margin-top: 50rem; }
   @media only screen and (max-width: $bp-medium) { margin-top: 35rem; }
   @media only screen and (max-width: $bp-small) { width: 25rem; margin-top: 8rem; }

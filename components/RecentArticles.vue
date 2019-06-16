@@ -5,9 +5,35 @@
             <a href="#" class="btn-viewAll">View All</a>
         </div>
         <div class="recent-article-cards-wrap">
+            <div class="ra-card" v-for="article in recentArticles" :key="article.id">
+                <div class="ra-card__bk"></div>
+                <img v-bind:src="article.image" alt="Article Image" class="ra-card__image">
+                <div class="ra-card__content">
+                    <h3>{{ article.title }}</h3>
+                    <p>{{ article.shortDesc }}</p>
+                </div>
+                <div class="ra-card__buttons-wrap">
+                    <a href="#" class="btn-author">Author</a>
+                    <a href="#" class="btn-readMore ra-card__buttons-wrap__readMoreBtn">Read More</a>
+                </div>
+            </div>
+
+            <!-- <div class="ra-card">
+                <div class="ra-card__bk"></div>
+                <img src="~assets/images/e3.jpg" alt="Article Image" class="ra-card__image">
+                <div class="ra-card__content">
+                    <h3>E3 2019 Just Started</h3>
+                    <p>E3 2019 Started. Some of the gigants you will be watching this year are: EA, Ubisoft, Microsoft, Square Enix and more.</p>
+                </div>
+                <div class="ra-card__buttons-wrap">
+                    <a href="#" class="btn-author">Author</a>
+                    <a href="#" class="btn-readMore ra-card__buttons-wrap__readMoreBtn">Read More</a>
+                </div>
+            </div>
+
             <div class="ra-card">
                 <div class="ra-card__bk"></div>
-                <img src="../static/images/e3.jpg" alt="Article Image" class="ra-card__image">
+                <img src="~assets/images/e3.jpg" alt="Article Image" class="ra-card__image">
                 <div class="ra-card__content">
                     <h3>E3 2019 Just Started</h3>
                     <p>E3 2019 Started. Some of the gigants you will be watching this year are: EA, Ubisoft, Microsoft, Square Enix and more.</p>
@@ -16,38 +42,39 @@
                     <a href="#" class="btn-author">Author</a>
                     <a href="#" class="btn-readMore ra-card__buttons-wrap__readMoreBtn">Read More</a>
                 </div>
-            </div>
-                        <div class="ra-card">
-                <div class="ra-card__bk"></div>
-                <img src="../static/images/e3.jpg" alt="Article Image" class="ra-card__image">
-                <div class="ra-card__content">
-                    <h3>E3 2019 Just Started</h3>
-                    <p>E3 2019 Started. Some of the gigants you will be watching this year are: EA, Ubisoft, Microsoft, Square Enix and more.</p>
-                </div>
-                <div class="ra-card__buttons-wrap">
-                    <a href="#" class="btn-author">Author</a>
-                    <a href="#" class="btn-readMore ra-card__buttons-wrap__readMoreBtn">Read More</a>
-                </div>
-            </div>
-                        <div class="ra-card">
-                <div class="ra-card__bk"></div>
-                <img src="../static/images/e3.jpg" alt="Article Image" class="ra-card__image">
-                <div class="ra-card__content">
-                    <h3>E3 2019 Just Started</h3>
-                    <p>E3 2019 Started. Some of the gigants you will be watching this year are: EA, Ubisoft, Microsoft, Square Enix and more.</p>
-                </div>
-                <div class="ra-card__buttons-wrap">
-                    <a href="#" class="btn-author">Author</a>
-                    <a href="#" class="btn-readMore ra-card__buttons-wrap__readMoreBtn">Read More</a>
-                </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </template>
 
 <script>
 export default {
-    name: 'RecentArticles'
+    name: 'RecentArticles',
+    // Data 
+    data() {
+        return {
+            recentArticles: [
+                {
+                    image: require(`@/assets/images/e3.jpg`),
+                    title: 'E3 2019 Just Started',
+                    shortDesc: 'E3 2019 Started. Some of the gigants you will be watching this year are: EA, Ubisoft, Microsoft, Square Enix and more.',
+                    author: 1 // Representing authors ID
+                },
+                {
+                    image: require(`@/assets/images/ps.jpg`),
+                    title: 'Project Scarlett 2020',
+                    shortDesc: 'Microsoft & Xbox team announced new project name Scarlett which is coming out next year for holidays.',
+                    author: 2 // Representing authors ID
+                },
+                {
+                    image: require(`@/assets/images/cp-1.jpg`),
+                    title: 'Keanu in Cyberpunk',
+                    shortDesc: 'One of the biggest surprises on E3 2019, was when Keanu Reeves himself appeared at Microsoft\'s expo right after Cyberpunk\'s trailer.',
+                    author: 1 // Representing authors ID
+                }
+            ]
+        }
+    }
 };
 </script>
 
@@ -93,12 +120,15 @@ export default {
         z-index: 10;
         margin-top: 3.5rem;
         // - Media Queries - \\
+        @media only screen and (max-width: $bp-desktop) { height: 15rem; }
         @media only screen and (max-width: $bp-largest-5) { height: 15rem; }
+        @media only screen and (max-width: $bp-small) { width: 80%; height: 18rem; }
         @media only screen and (max-width: $bp-vsmall-4) { margin-top: 3rem; }
     }
     // Content
     &__content {
         margin-top: 3rem;
+        height: 15rem;
         width: 80%;
         // Title
         h3 { font-size: 3rem; font-weight: 300; margin-bottom: 2rem; }
@@ -110,12 +140,12 @@ export default {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-top: 5rem;
+        height: 10rem;
         width: 80%;
         // - Media Queries - \\
-        @media only screen and (max-width: $bp-desktop) { margin-top: 2rem; }
-        @media only screen and (max-width: $bp-small) { margin-top: 8rem; }
-        @media only screen and (max-width: $bp-vsmall-4) { margin-top: 4rem; }
+        @media only screen and (max-width: $bp-desktop) { margin-top: 4rem; }
+        @media only screen and (max-width: $bp-small) { margin-top: 4rem; }
+        @media only screen and (max-width: $bp-vsmall-4) { margin-top: 1rem; }
         // Read More Button
         &__readMoreBtn {
             width: 35%;
