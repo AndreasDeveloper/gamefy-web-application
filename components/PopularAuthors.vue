@@ -113,8 +113,8 @@ export default {
     h4 { font-weight: 300; font-size: 1.8rem; color: $color-primary; margin-bottom: 2rem; }
     // Author Image
     &__image {
-        width: 15rem;
-        height: 15rem;
+        width: 12rem;
+        height: 12rem;
         border-radius: 50%;
         margin-bottom: 2rem;
     }

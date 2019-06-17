@@ -4,9 +4,9 @@
             <i class="icon ion-ios-menu"></i>
         </div>
         <div class="nav-icons-wrap">
-            <i class="icon ion-ios-home"></i>
-            <i class="icon ion-md-contact"></i>
-            <i class="icon ion-logo-game-controller-b"></i>
+            <a href="/" class="nav-icons-wrap__nLink" ref="icon1"><i class="icon ion-ios-home"></i></a>
+            <a href="/user-profile" class="nav-icons-wrap__nLink" ref="icon2"><i class="icon ion-md-contact"></i></a>
+            <a href="/products" class="nav-icons-wrap__nLink" ref="icon3"><i class="icon ion-logo-game-controller-b"></i></a>
         </div>
         <div class="bottom-icons-wrap">
             <i class="icon ion-ios-information-circle"></i>
@@ -17,7 +17,23 @@
 
 <script>
 export default {
-    name: 'SideNav'
+    name: 'SideNav',
+    // Methods
+    methods: {
+        checkRoute() {
+            if (this.$route.path === '/') {
+                this.$refs.icon1.classList.toggle('sideLine');
+            } else if (this.$route.path === '/user-profile') {
+                this.$refs.icon2.classList.toggle('sideLine');
+            } else if (this.$route.path === '/products') {
+                this.$refs.icon3.classList.toggle('sideLine');
+            }
+        }
+    },
+    // Lifecycle Methods - Mounted
+    mounted() {
+        this.checkRoute();
+    }
 };
 </script>
 
@@ -44,9 +60,17 @@ export default {
 .hamburger-icon-wrap, .nav-icons-wrap, .bottom-icons-wrap {
     display: flex;
     flex-direction: column;
-    @media only screen and (max-width: $bp-small) { flex-direction: row; }
-    i { cursor: pointer; margin: 1rem 0; 
+    width: 100%;
+    @media only screen and (max-width: $bp-small) { flex-direction: row; width: unset; }
+    i { cursor: pointer; margin: 1rem 0; text-align: center;
         @media only screen and (max-width: $bp-small) { margin: 0 1rem; }
     }
+    &__nLink { color: $color-white; width: 100%; text-align: center; margin: 1rem 0; }
+}
+
+// Side Line Navigation
+.sideLine {
+    border-left: .4rem solid $color-white;
+    @media only screen and (max-width: $bp-small) { border-left: 0; border-top: .4rem solid $color-white; }
 }
 </style>

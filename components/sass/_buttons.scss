@@ -72,3 +72,19 @@
     font-weight: 300;
     width: 35%;
 }
+
+// Button Arrow Forward
+.btn-arrForward {
+    position: absolute;
+    top: 50%;
+    right: 4%;
+    background-color: $color-white;
+    border-radius: 50%;
+    box-shadow: 0 4px 4px rgba($color-black, .25);
+    padding: 2rem 2.5rem;
+    z-index: 100;
+    cursor: pointer;
+    i { color: $color-primary; font-size: 2rem; }
+    // - Media Queries - \\
+    @media only screen and (max-width: $bp-largest-5) { right: 0; }
+}

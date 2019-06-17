@@ -5,6 +5,9 @@
             <a href="#" class="btn-viewAll">View All</a>
         </div>
         <div class="recent-article-cards-wrap">
+            <!-- Button Arrow Forward -->
+            <div class="btn-arrForward"><i class="icon ion-ios-arrow-forward"></i></div>
+            <!-- Recent Article Card -->
             <div class="ra-card" v-for="article in recentArticles" :key="article.id">
                 <div class="ra-card__bk"></div>
                 <img v-bind:src="article.image" alt="Article Image" class="ra-card__image">
@@ -83,6 +86,7 @@ export default {
 @import './sass/main.scss';
 
 .recent-article-cards-wrap {
+    position: relative;
     display: flex;
     justify-content: center;
     margin-bottom: 2rem;

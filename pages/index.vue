@@ -1,6 +1,5 @@
 <template>
   <div>
-
     <div class="main-content">
       <!-- HEADER | START -->
       <div class="header">
@@ -88,25 +87,19 @@ export default {
   margin-left: 2rem;
   background-color: $color-white;
   border-radius: 7rem;
-  width: 17%;
+  padding-right: 2rem;
   position: relative;
   display: flex;
   align-items: center;
-  // - Media Queries - \\
-  @media only screen and (max-width: $bp-desktop) { width: 20%; }
-  @media only screen and (max-width: $bp-largest-5) { width: 25%; }
-  @media only screen and (max-width: $bp-medium) { width: 30%; }
-  @media only screen and (max-width: $bp-small) { width: 55%; }
-  @media only screen and (max-width: $bp-vsmall-3b) { width: 65%; }
   // Image
   img {
-    width: 4.5rem;
-    height: 4.5rem;
+    width: 4rem;
+    height: 4rem;
     border-radius: 50%;
     margin-left: -.3rem;
   }
   // Posted By Text
-  h2 { margin-left: 1rem; font-weight: 400; font-size: 1.7rem; }
+  h2 { margin-left: 1rem; font-weight: 400; font-size: 1.4rem; }
 }
 // Article in Header Wrapper
 .article-info-wrap {
