@@ -87,16 +87,16 @@ export default {
   margin-left: 2rem;
   background-color: $color-white;
   border-radius: 7rem;
-  padding-right: 2rem;
   position: relative;
   display: flex;
   align-items: center;
+  padding: .25rem;
+  padding-right: 2rem;
   // Image
   img {
     width: 4rem;
     height: 4rem;
     border-radius: 50%;
-    margin-left: -.3rem;
   }
   // Posted By Text
   h2 { margin-left: 1rem; font-weight: 400; font-size: 1.4rem; }
