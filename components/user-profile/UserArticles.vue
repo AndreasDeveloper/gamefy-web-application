@@ -13,7 +13,6 @@
                 </div>
             </div>
             <div class="articles-col ac-1">
-                
                 <ArticleBlockSm v-bind:articleClass="'article-block-sm abs-top-one'" v-bind:articleImage="recentArticles[1].image" v-bind:articleImageAlt="recentArticles[1].imageAlt" v-bind:articleDate="recentArticles[1].datePosted" v-bind:articleName="recentArticles[1].name" />
                 <ArticleBlockSm v-bind:articleClass="'article-block-sm'" v-bind:articleImage="recentArticles[2].image" v-bind:articleImageAlt="recentArticles[2].imageAlt" v-bind:articleDate="recentArticles[2].datePosted" v-bind:articleName="recentArticles[2].name" />
             </div>
@@ -92,6 +91,7 @@ export default {
     padding-top: 5rem;
     padding-bottom: 5rem;
     justify-content: space-around;
+    @media only screen and (max-width: $bp-small) { flex-direction: column; }
 }
 
 // Latest Article Block
@@ -111,23 +111,35 @@ export default {
         height: 20rem;
         margin-bottom: 2rem;
         border-radius: 1rem 1rem 0 0;
+        @media only screen and (max-width: $bp-largest-5) { height: 14rem; }
     }
     // Content Wrap
-    &__content-wrap { padding: 0 2rem; margin-top: 4rem; }
+    &__content-wrap { padding: 0 2rem; margin-top: 4rem;
+        @media only screen and (max-width: $bp-small) { padding-bottom: 3rem; }
+    }
     // Date
     &__date { color: $color-primary; font-size: 1.4rem; font-weight: 300; margin-bottom: 1rem; }
     // Name 
-    &__name { font-size: 2.8rem; font-weight: 300; margin-bottom: 2rem; }
+    &__name { font-size: 2.8rem; font-weight: 300; margin-bottom: 2rem;
+        @media only screen and (max-width: $bp-largest-5) { font-size: 1.9rem; }
+    }
     // Content
-    &__content { font-size: 2rem; font-weight: 300; color: $color-font-1; }
+    &__content { font-size: 2rem; font-weight: 300; color: $color-font-1; 
+        @media only screen and (max-width: $bp-largest-5) { font-size: 1.6rem; }
+    }
     // On Hover
     &:hover { transform: scale(1.05); }
+    // - Media Queries - \\
+    @media only screen and (max-width: $bp-medium) { margin-right: 2rem; }
+    @media only screen and (max-width: $bp-small) { width: unset; margin-bottom: 3rem; }
 }
 
 // Articles Column One
 .articles-col {
     display: flex;
     flex-direction: column;
+    // - Media Queries - \\
+    @media only screen and (max-width: $bp-medium) { margin-right: 2rem; }
 }
 
 </style>

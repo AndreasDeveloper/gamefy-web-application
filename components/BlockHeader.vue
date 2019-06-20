@@ -27,7 +27,11 @@ export default {
     display: flex; 
     flex-direction: column;
         > h2 { text-transform: none; color: $color-font-2; margin-bottom: 1rem; }
-        > span { width: 6rem; height: .3rem; background-color: $color-primary; margin-left: .5rem; }
+        > span { width: 6rem; height: .3rem; background-color: $color-primary; margin-left: .5rem; 
+            @media only screen and (max-width: $bp-small) { margin-left: 0; margin: 0 auto; }
+        }
+        // - Media Queries - \\
+        @media only screen and (max-width: $bp-small) { text-align: center; margin-bottom: 2rem; }
     }
     > a { margin: 0; }
     > a > span  { margin-left: .5rem; font-size: 1.7rem; } // Plus/Add Icon

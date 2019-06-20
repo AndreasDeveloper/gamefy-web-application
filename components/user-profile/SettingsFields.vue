@@ -19,6 +19,7 @@ export default {
 <style lang="scss" scoped>
 // Importing SASS Components
 @import '../sass/_variables.scss';
+@import '../sass/_mixins.scss';
 
 // Main Wrapper
 .setting-field {
@@ -38,7 +39,11 @@ export default {
         font-weight: 200;
         margin-left: 1.5rem;
     }
-    > a { margin-right: 0 !important; border-radius: .3rem; }
+    > a { margin-right: 0 !important; border-radius: .3rem; 
+        @media only screen and (max-width: $bp-small) { margin-top: 2rem; }
+    }
+    // - Media Queries - \\
+    @media only screen and (max-width: $bp-small) { display: block; }
 }
 .keyValWrap { display: flex; align-items: center; }
 </style>

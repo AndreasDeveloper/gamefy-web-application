@@ -93,6 +93,7 @@ html {
     text-transform: uppercase;
     cursor: pointer;
     height: 100%;
+    text-align: center;
     > h2 { font-weight: 400; }
 }
 </style>

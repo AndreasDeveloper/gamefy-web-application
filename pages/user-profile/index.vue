@@ -54,6 +54,8 @@ export default {
   position: relative;
   display: flex;
   flex-direction: column;
+  // - Media Queries - \\
+  @media only screen and (max-width: $bp-largest-5) { min-height: 30vh; margin: 4rem 9rem 4rem 5rem; }
   @media only screen and (max-width: $bp-small) { margin: 4rem 4rem; }
 }
 </style>

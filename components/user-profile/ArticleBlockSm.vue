@@ -30,6 +30,9 @@ export default {
         width: auto;
         height: 18rem;
         border-radius: 1rem 1rem 0 0;
+        // - Media Queries - \\
+        @media only screen and (max-width: $bp-largest-5) { height: 14rem; }
+        @media only screen and (max-width: $bp-small) { width: 100%; }
     }
     // Content
     &__content {
@@ -46,10 +49,14 @@ export default {
         // Date
         &__date { font-size: 1.2rem; font-weight: 300; color: $color-primary; margin-bottom: .7rem; }
         // Name
-        &__name { font-size: 2.2rem; font-weight: 300; }
+        &__name { font-size: 2.2rem; font-weight: 300;
+            @media only screen and (max-width: $bp-largest-5) { font-size: 1.6rem; }
+        }
     }
     // On Hover
     &:hover { transform: scale(1.05); }
+    // - Media Queries - \\
+    @media only screen and (max-width: $bp-small) { margin-bottom: 3rem; }
 }
 
 // Article Block Small on Top

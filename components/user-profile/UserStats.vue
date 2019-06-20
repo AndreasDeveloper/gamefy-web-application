@@ -58,6 +58,7 @@ export default {
     display: flex;
     align-items: center;
     margin-top: 2rem;
+    @media only screen and (max-width: $bp-small) { flex-direction: column; }
 }
 
 // User Data Block
@@ -81,6 +82,9 @@ export default {
         text-align: center;
         margin-bottom: 2rem;
     }
+    // - Media Queries - \\
+    @media only screen and (max-width: $bp-largest-5) { width: 100%; margin-right: 2rem; }
+    @media only screen and (max-width: $bp-small) { width: unset; margin-bottom: 2rem; }
 }
 
 // Articles-Membership Block
@@ -89,10 +93,16 @@ export default {
     flex-direction: column;
     align-items: center;
     width: 33.33333333333333%;
+    // - Media Queries - \\
+    @media only screen and (max-width: $bp-largest-5) { width: 100%; margin-right: 2rem; }
+    @media only screen and (max-width: $bp-small) { width: unset; }
 }
 // Revenue Details Block
 .revenue-details {
     width: 33.33333333333333%;
+    // - Media Queries - \\
+    @media only screen and (max-width: $bp-largest-5) { width: 100%; }
+    @media only screen and (max-width: $bp-small) { width: unset; margin-bottom: 3rem; }
 }
 // Data Blocks
 .data-block {
