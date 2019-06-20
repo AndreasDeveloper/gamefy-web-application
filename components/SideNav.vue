@@ -5,7 +5,7 @@
         </div>
         <div class="nav-icons-wrap">
             <a href="/" class="nav-icons-wrap__nLink" ref="icon1"><i class="icon ion-ios-home"></i></a>
-            <a href="/user-profile" class="nav-icons-wrap__nLink" ref="icon2"><i class="icon ion-md-contact"></i></a>
+            <a href="/user-profile" class="nav-icons-wrap__nLink" ref="icon2" no-prefetch><i class="icon ion-md-contact"></i></a>
             <a href="/products" class="nav-icons-wrap__nLink" ref="icon3"><i class="icon ion-logo-game-controller-b"></i></a>
         </div>
         <div class="bottom-icons-wrap">

@@ -8,6 +8,7 @@
 
 
 <script>
+// Importing Components
 import TopNav from '../components/TopNav';
 import SideNav from '../components/SideNav';
 
@@ -75,5 +76,23 @@ html {
   @media only screen and (max-width: $bp-largest-5) { min-height: 40vh; margin: 3rem 6rem; }
   // @media only screen and (max-width: $bp-medium) { min-height: 40vh; margin: 3rem 6rem; }
   @media only screen and (max-width: $bp-small) { margin: 3rem 5rem; }
+}
+
+// Blue Blocks
+.blue-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5.5rem;
+    background-color: $color-primary;
+    border-radius: 1rem;
+    box-shadow: 0px 4px 4px rgba($color-black, 0.25);
+    color: $color-white;
+    font-size: 1.7rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    height: 100%;
+    > h2 { font-weight: 400; }
 }
 </style>

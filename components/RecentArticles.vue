@@ -1,9 +1,6 @@
 <template>
     <div class="section-wrap-standard">
-        <div class="section-header-standard">
-            <h2>Recent Articles</h2>
-            <a href="#" class="btn-viewAll">View All</a>
-        </div>
+        <SectionHeader sectionName="Recent Articles" />
         <div class="recent-article-cards-wrap">
             <!-- Button Arrow Forward -->
             <div class="btn-arrForward"><i class="icon ion-ios-arrow-forward"></i></div>
@@ -51,6 +48,9 @@
 </template>
 
 <script>
+// Importing Components
+import SectionHeader from '../components/SectionHeader';
+
 export default {
     name: 'RecentArticles',
     // Data 
@@ -77,6 +77,10 @@ export default {
                 }
             ]
         }
+    },
+    // Components
+    components: {
+        SectionHeader
     }
 };
 </script>

@@ -8,9 +8,9 @@
     border-radius: 12rem;
     border: 1px solid $color-primary;
     color: $color-primary;
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     font-weight: 300;
-    padding: .6rem;
+    padding: .8rem;
     padding-top: 1rem;
     text-decoration: none;
     width: 22%; 
@@ -65,6 +65,7 @@
     text-transform: uppercase;
     text-align: center;
     padding: .8rem;
+    padding-top: 1rem;
     color: $color-white;
     background-color: $color-primary;
     border-radius: 10rem;
@@ -103,3 +104,16 @@
 }
 // Button More Details
 .btn-moreDetails { border: 1px solid $color-primary; }
+
+// Edit Field Button
+.btn-editField {
+    display: inline-flex;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 1.2rem 2.5rem 1rem 2.5rem;
+    color: $color-white;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+.normal { background-color: $color-primary; }
+.danger { background-color: $color-red; }

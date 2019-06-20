@@ -1,9 +1,6 @@
 <template>
     <div class="section-wrap-standard">
-        <div class="section-header-standard">
-            <h2>Popular Authors</h2>
-            <a href="#" class="btn-viewAll">View All</a>
-        </div>
+        <SectionHeader sectionName="Popular Authors" />
         <div class="popular-authors-cards-wrap">
 
             <div class="pa-card" v-for="author in popularAuthors" :key="author.id">
@@ -46,6 +43,9 @@
 </template>
 
 <script>
+// Importing Components
+import SectionHeader from '../components/SectionHeader';
+
 export default {
     name: 'PopularAuthors',
     // Data
@@ -78,6 +78,10 @@ export default {
                 }
             ]
         }
+    },
+    // Components
+    components: {
+        SectionHeader
     }
 };
 </script>
