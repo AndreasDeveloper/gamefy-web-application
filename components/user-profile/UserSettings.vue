@@ -1,6 +1,6 @@
 <template>
     <!-- USER SETTINGS | START -->
-    <div class="data-block-wrap">
+    <div class="data-block-wrap usp-wrap">
         <BlockHeader blockHeaderName="Settings" />
         <div class="user-settings-wrap">
             <SettingsField fieldName="Username:" v-bind:fieldKey="'John Doe'" btnStyle="normal" btnText="Edit"  />

@@ -38,7 +38,7 @@ export default {
         font-weight: 200;
         margin-left: 1.5rem;
     }
-    > a { margin-right: 0 !important; }
+    > a { margin-right: 0 !important; border-radius: .3rem; }
 }
 .keyValWrap { display: flex; align-items: center; }
 </style>

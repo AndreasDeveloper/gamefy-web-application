@@ -1,7 +1,7 @@
 <template>
     <!-- RECENT ARTICLES | START -->
     <div class="data-block-wrap">
-        <BlockHeader blockHeaderName="Recent Articles" btnText="New Article" />
+        <BlockHeader blockHeaderName="Recent Articles" btnText="New Article" v-bind:plusIcon="plusHtml" />
 
         <div class="articles-wrap">
             <div class="latest-article">
@@ -76,7 +76,8 @@ export default {
                     image: require(`@/assets/images/cp-1.jpg`),
                     imageAlt: 'Johnny Silverhand'
                 }
-            ]
+            ],
+            plusHtml: '<i class="icon ion-ios-add"></i>'
         }
     }
 };
@@ -102,6 +103,8 @@ export default {
     box-shadow: 0px 4px 4px rgba($color-black, 0.25);
     border-radius: 1rem;
     width: 30%;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
     // Image
     &__image {
         width: auto;
@@ -110,13 +113,15 @@ export default {
         border-radius: 1rem 1rem 0 0;
     }
     // Content Wrap
-    &__content-wrap { padding: 0 2rem; }
+    &__content-wrap { padding: 0 2rem; margin-top: 4rem; }
     // Date
     &__date { color: $color-primary; font-size: 1.4rem; font-weight: 300; margin-bottom: 1rem; }
     // Name 
     &__name { font-size: 2.8rem; font-weight: 300; margin-bottom: 2rem; }
     // Content
     &__content { font-size: 2rem; font-weight: 300; color: $color-font-1; }
+    // On Hover
+    &:hover { transform: scale(1.05); }
 }
 
 // Articles Column One

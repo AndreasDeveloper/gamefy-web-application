@@ -23,6 +23,8 @@ export default {
 // Article Block Small
 .article-block-sm {
     position: relative;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
     // Image
     &__image { 
         width: auto;
@@ -46,6 +48,8 @@ export default {
         // Name
         &__name { font-size: 2.2rem; font-weight: 300; }
     }
+    // On Hover
+    &:hover { transform: scale(1.05); }
 }
 
 // Article Block Small on Top

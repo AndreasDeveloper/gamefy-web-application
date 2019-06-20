@@ -4,7 +4,7 @@
             <h2>{{ blockHeaderName }}</h2>
             <span></span>
         </div>
-        <a href="#" class="btn-moreDetails">{{ btnText }}</a>
+        <a href="#" class="btn-moreDetails">{{ btnText }} <span v-html="plusIcon"></span></a>
     </div>
 </template>
 
@@ -12,7 +12,7 @@
 export default {
     name: 'BlockHeader',
     // Props
-    props: ['blockHeaderName', 'btnText']
+    props: ['blockHeaderName', 'btnText', 'plusIcon']
 };
 </script>
 
@@ -30,5 +30,9 @@ export default {
         > span { width: 6rem; height: .3rem; background-color: $color-primary; margin-left: .5rem; }
     }
     > a { margin: 0; }
-  }
+    > a > span  { margin-left: .5rem; font-size: 1.7rem; } // Plus/Add Icon
+}
+
+// User Settings Page Wrap
+.usp-wrap > .block-header > a[data-v-1960eb22] { display: none !important; }
 </style>
