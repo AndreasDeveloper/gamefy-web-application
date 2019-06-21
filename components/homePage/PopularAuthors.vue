@@ -44,7 +44,7 @@
 
 <script>
 // Importing Components
-import SectionHeader from '../components/SectionHeader';
+import SectionHeader from '../SectionHeader';
 
 export default {
     name: 'PopularAuthors',
@@ -88,7 +88,7 @@ export default {
 
 <style lang="scss" scoped>
 // Importing SASS Components
-@import './sass/main.scss';
+@import '../sass/main.scss';
 
 // Popular Authors Cards Wrapper
 .popular-authors-cards-wrap {

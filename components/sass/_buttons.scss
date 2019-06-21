@@ -54,6 +54,11 @@
     text-align: center;
     width: 32%;
     i { margin-left: .5rem; }
+    // On Hover
+    &:hover { 
+        i { margin-left: .8rem; }
+    }
+    & i { margin-left: .3rem; transition: margin-left .2s; }
     // - Media Queries - \\
     @media only screen and (max-width: $bp-medium) { width: 40%; }
 }
@@ -72,6 +77,9 @@
     font-size: 1.2rem;
     font-weight: 300;
     width: 35%;
+    transition: all .2s ease-in-out;
+    // On Hover
+    &:hover { background-color: $color-primary-dark; }
 }
 
 // Button Arrow Forward
@@ -90,7 +98,7 @@
     @media only screen and (max-width: $bp-largest-5) { right: 0; }
 }
 
-// Button Full Story
+// Button Full Story & Button More Details
 .btn-fullStory, .btn-moreDetails {
     display: inline-flex;
     align-items: center;
@@ -105,6 +113,13 @@
 }
 // Button More Details
 .btn-moreDetails { border: 1px solid $color-primary; }
+// Button Full Story
+.btn-fullStory {
+    transition: all .1s ease-in-out;
+    &:hover {
+        margin-top: .5rem;
+    }
+}
 
 // Edit Field Button
 .btn-editField {
@@ -118,3 +133,20 @@
 }
 .normal { background-color: $color-primary; }
 .danger { background-color: $color-red; }
+
+// Button Read More | New Announced Titles Block
+.btn-readMoreGray {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 300;
+    padding: .8rem;
+    color: $color-font-2;
+    border: 1px solid $color-font-2;
+    border-radius: 10rem;
+    width: 40%;
+    i { margin-left: .5rem; }
+}

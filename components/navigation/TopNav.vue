@@ -24,7 +24,7 @@ export default {
 
 <style lang="scss" scoped>
 // Importing SASS Components
-@import './sass/main.scss';
+@import '../sass/main.scss';
 
 // Top Navigation Main Wrapper
 .top-nav-wrap {

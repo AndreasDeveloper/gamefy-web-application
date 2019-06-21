@@ -9,8 +9,8 @@
 
 <script>
 // Importing Components
-import TopNav from '../components/TopNav';
-import SideNav from '../components/SideNav';
+import TopNav from '../components/navigation/TopNav';
+import SideNav from '../components/navigation/SideNav';
 
 export default {
   components: {

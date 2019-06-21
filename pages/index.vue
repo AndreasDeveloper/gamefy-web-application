@@ -32,17 +32,13 @@
 
 <script>
 // Importing Components
-import SideNav from '../components/SideNav';
-import TopNav from '../components/TopNav';
-import PopularAuthors from '../components/PopularAuthors';
-import RecentArticles from '../components/RecentArticles';
+import PopularAuthors from '../components/homePage/PopularAuthors';
+import RecentArticles from '../components/homePage/RecentArticles';
 
 export default {
   name: 'homePage',
   // Components
   components: {
-    SideNav,
-    TopNav,
     PopularAuthors,
     RecentArticles
   },

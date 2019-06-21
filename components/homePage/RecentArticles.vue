@@ -49,7 +49,7 @@
 
 <script>
 // Importing Components
-import SectionHeader from '../components/SectionHeader';
+import SectionHeader from '../SectionHeader';
 
 export default {
     name: 'RecentArticles',
@@ -87,7 +87,7 @@ export default {
 
 <style lang="scss" scoped>
 // Importing SASS Components
-@import './sass/main.scss';
+@import '../sass/main.scss';
 
 .recent-article-cards-wrap {
     position: relative;

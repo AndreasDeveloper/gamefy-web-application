@@ -39,7 +39,7 @@ export default {
 
 <style lang="scss" scoped>
 // Importing Variables
-@import './sass/main.scss';
+@import '../sass/main.scss';
 
 // Side Navigation Main Wrapper
 .side-nav-wrap {
