@@ -3,16 +3,11 @@
         <SectionHeader sectionName="Popular Titles" />
         <!-- Popular Titles Slider -->
         <div class="pt-slider">
-            <i class="icon ion-ios-arrow-back arrow-left"></i>
-            <i class="icon ion-ios-arrow-forward arrow-right"></i>
-            <div class="pt-slider-elements">
+            <i class="icon ion-ios-arrow-back arrow-left" ref="arrowLeft"></i>
+            <i class="icon ion-ios-arrow-forward arrow-right" ref="arrowRight"></i>
+            <div class="pt-slider-elements" ref="ptSliderElements">
                 <div class="pt-slider-elements__row-1">
-                    <div class="pt-el pt-el-1"></div>
-                    <div class="pt-el pt-el-2"></div>
-                    <div class="pt-el pt-el-3"></div>
-                    <div class="pt-el pt-el-4"></div>
-                    <div class="pt-el pt-el-4"></div>
-                    <div class="pt-el pt-el-4"></div>
+                    <div class="pt-el" v-for="title in popularTitles" :key="title.id" v-bind:style="{backgroundImage: `url(${title.image})`}"></div>
                 </div>
             </div>
         </div>
@@ -32,13 +27,92 @@ export default {
                 { id: 1, image: require(`@/assets/images/w3-2.jpg`) },
                 { id: 2, image: require(`@/assets/images/f4-1.jpg`) },
                 { id: 3, image: require(`@/assets/images/dl2-1.jpg`) },
-                { id: 4, image: require(`@/assets/images/d2-1.jpg`) }
+                { id: 4, image: require(`@/assets/images/d2-1.jpg`) },
+                { id: 4, image: require(`@/assets/images/d2-1.jpg`) },
+                { id: 4, image: require(`@/assets/images/d2-1.jpg`) },
+                { id: 4, image: require(`@/assets/images/d2-1.jpg`) },
+                { id: 4, image: require(`@/assets/images/d2-1.jpg`) },
             ]
         }
     },
     // Components
     components: {
         SectionHeader
+    },
+    // Methods
+    methods: {
+        sliderFunc() {
+            // DOM Elements
+            let slider = this.$refs.ptSliderElements,
+            arrows = [this.$refs.arrowLeft, this.$refs.arrowRight],
+            isDown = false,
+            startX,
+            scrollLeft;
+            
+            slider.scrollLeft = 0;
+            slider.onmousedown = function (e) {
+                'use strict';
+                isDown = true;
+                slider.classList.add('active');
+                startX = e.pageX - slider.offsetLeft;
+                scrollLeft = slider.scrollLeft;
+            };
+
+            slider.onmouseup = function () {
+                'use strict';
+                isDown = false;
+                slider.classList.remove('active');
+            };
+
+            slider.onmouseleave = function () {
+                'use strict';
+                isDown = false;
+                slider.classList.remove('active');
+            };
+
+            slider.onmousemove = function (e) {
+                'use strict';
+                if (!isDown) { return; }
+                e.preventDefault();
+                var x = e.pageX - slider.offsetLeft,
+                    walk = x - startX;
+                slider.scrollLeft = scrollLeft - walk;
+            };
+
+            function controlsSlider(num) {
+                'use strict';
+                var smooth = setInterval(function () {
+                    slider.scrollLeft += num;
+                }, 1);
+                setTimeout(function () {
+                    clearInterval(smooth);
+                }, 800);
+            }
+            arrows[0].onclick = function () {
+                'use strict';
+                controlsSlider(-10);
+            };
+
+            arrows[1].onclick = function () {
+                'use strict';
+                controlsSlider(10);
+            };
+
+            window.onkeydown = function (e) {
+                'use strict';
+                var key = e.keyCode;
+                if (key === 39) {
+                    controlsSlider(10);
+                }
+                if (key === 37) {
+                    controlsSlider(-10);
+                }
+            };
+        }
+    },
+    // Lifecycle Method - Mounted > Calls sliderFunc as soon as DOM is rendered
+    mounted() {
+        this.sliderFunc();
     }
 };
 </script>
@@ -53,7 +127,7 @@ export default {
 
 // Slider Elements Wrap
 .pt-slider-elements {
-    width: 100%;
+    width: 92%;
     margin-top: 3rem;
     overflow: hidden;
     white-space: nowrap;
@@ -115,7 +189,7 @@ export default {
     box-shadow: 0 0 .8rem rgba($color-black, 0.4);
 }
 .arrow-left { top: 40%; left: -1%; }
-.arrow-right { top: 40%; right: 5%; }
+.arrow-right { top: 40%; right: 6%; }
 
 // Seed Data - TEST ***
 .pt-el-1 { background-image: url(~assets/images/w3-2.jpg); }
