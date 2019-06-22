@@ -30,6 +30,7 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    {src: '~/plugins/youtube.js', ssr: false}
   ],
   /*
   ** Nuxt.js modules
@@ -40,6 +41,9 @@ module.exports = {
   ** Build configuration
   */
   build: {
+    transpile: [
+      'vue-youtube-embed'
+    ],
     /*
     ** You can extend webpack config here
     */

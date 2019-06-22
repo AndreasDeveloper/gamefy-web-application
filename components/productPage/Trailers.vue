@@ -5,8 +5,9 @@
         <div class="trailers-wrap">
             <div class="trailer-block" v-for="trailer in trailers" :key="trailer.id">
                 <div class="trailer-block__bk"></div>
-                    <i class="icon ion-ios-play trailer-block__icon"></i>
-                    <img v-bind:src="trailer.thumbnail" alt="" class="trailer-block__image">
+                    <i class="icon ion-ios-play trailer-block__icon" @click="showModal"></i>
+                    <Modal v-show="isModalVisible" @close="closeModal" v-bind:videoLink="trailer.link" />
+                    <img v-bind:src="trailer.thumbnail" v-bind:alt="`${trailer.gameName} Thumbnail Cover`" class="trailer-block__image">
                 <div class="trailer-block__content">
                     <h3 class="trailer-block__content__developer">{{ trailer.developer }}</h3>
                     <h2 class="trailer-block__content__name">{{ trailer.gameName }}</h2>
@@ -20,6 +21,7 @@
 <script>
 // Importing Components
 import SectionHeader from '../SectionHeader';
+import Modal from '../Modal';
 
 export default {
     name: 'Trailers',
@@ -33,7 +35,7 @@ export default {
                     gameName: 'Cyberpunk 2077',
                     trailerShowcase: 'E3 2019 Trailer',
                     thumbnail: require(`@/assets/images/trailer-1.jpg`),
-                    link: 'https://www.youtube.com/watch?v=LembwKDo1Dk'
+                    link: 'LembwKDo1Dk'
                 },
                 {
                     id: 2,
@@ -41,7 +43,7 @@ export default {
                     gameName: 'Death Stranding',
                     trailerShowcase: 'New Trailer',
                     thumbnail: require(`@/assets/images/trailer-2.jpg`),
-                    link: 'https://www.youtube.com/watch?v=Hen8tPH0A2w'
+                    link: 'Hen8tPH0A2w'
                 },
                 {
                     id: 3,
@@ -49,14 +51,26 @@ export default {
                     gameName: 'Ghost Recon Breakpoint',
                     trailerShowcase: 'E3 2019 Trailer',
                     thumbnail: require(`@/assets/images/trailer-3.jpg`),
-                    link: 'https://www.youtube.com/watch?v=MseMleqxsBM'
+                    link: 'MseMleqxsBM'
                 }
-            ]
+            ],
+            // Modal Data
+            isModalVisible: false
         }
     },
     // Components
     components: {
-        SectionHeader
+        SectionHeader,
+        Modal
+    },
+    // Methods
+    methods: {
+        showModal() {
+            this.isModalVisible = true;
+        },
+        closeModal() {
+            this.isModalVisible = false;
+        }
     }
 };
 </script>
@@ -108,6 +122,7 @@ export default {
         cursor: pointer;
         text-align: center;
         z-index: 50;
+        @media only screen and (max-width: $bp-desktop) { top: 20%; }
     }
     // Article Image
     &__image {
