@@ -10,7 +10,7 @@
                 <img v-bind:src="article.image" alt="Article Image" class="ra-card__image">
                 <div class="ra-card__content">
                     <h3>{{ article.title }}</h3>
-                    <p>{{ article.shortDesc }}</p>
+                    <p>{{ shortenContent(article.content) }}..</p>
                 </div>
                 <div class="ra-card__buttons-wrap">
                     <a href="#" class="btn-author">Author</a>
@@ -33,24 +33,30 @@ export default {
             recentArticles: [
                 {
                     id: 60,
+                    date: '06/11/2019',
                     image: require(`@/assets/images/e3.jpg`),
                     title: 'E3 2019 Just Started',
-                    shortDesc: 'E3 2019 Started. Some of the gigants you will be watching this year are: EA, Ubisoft, Microsoft, Square Enix and more.',
-                    author: 1 // Representing authors ID
+                    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tristique magna sit amet purus. Leo a diam sollicitudin tempor id. Ut porttitor leo a diam sollicitudin tempor id. Sem viverra aliquet eget sit amet tellus cras adipiscing enim. Purus faucibus ornare suspendisse sed nisi lacus sed viverra. In aliquam sem fringilla ut. Tincidunt id aliquet risus feugiat in. Lacus laoreet non curabitur gravida arcu ac. Odio morbi quis commodo odio aenean sed adipiscing diam donec. Congue nisi vitae suscipit tellus mauris a diam maecenas. Ac odio tempor orci dapibus. Ut faucibus pulvinar elementum integer. Diam vulputate ut pharetra sit amet aliquam. Sagittis nisl rhoncus mattis rhoncus urna neque. Neque volutpat ac tincidunt vitae semper quis. Molestie a iaculis at erat pellentesque adipiscing. Convallis a cras semper auctor. Consectetur adipiscing elit duis tristique sollicitudin nibh. Massa tincidunt dui ut ornare. Condimentum vitae sapien pellentesque habitant morbi tristique senectus et netus. Convallis posuere morbi leo urna molestie. Diam ut venenatis tellus in metus. Maecenas pharetra convallis posuere morbi leo urna molestie at elementum. Ultrices vitae auctor eu augue ut lectus. Dui sapien eget mi proin. Aenean sed adipiscing diam donec adipiscing. Enim eu turpis egestas pretium aenean pharetra magna. Sit amet dictum sit amet justo donec. Semper quis lectus nulla at volutpat diam ut venenatis tellus. Aliquam eleifend mi in nulla posuere sollicitudin. Diam sollicitudin tempor id eu nisl nunc mi. Consectetur a erat nam at lectus urna. Cras pulvinar mattis nunc sed blandit libero volutpat sed. Pulvinar neque laoreet suspendisse interdum consectetur. Massa id neque aliquam vestibulum morbi blandit cursus. Blandit aliquam etiam erat velit scelerisque. Elementum nibh tellus molestie nunc. Auctor augue mauris augue neque gravida in fermentum et sollicitudin. Condimentum id venenatis a condimentum vitae. Viverra adipiscing at in tellus integer feugiat scelerisque varius morbi. Eget nunc lobortis mattis aliquam. Volutpat lacus laoreet non curabitur. ',
+                    authorName: 'John Doe',
+                    authorId: 1 // Representing authors ID
                 },
                 {
                     id: 61,
+                    date: '06/06/2019',
                     image: require(`@/assets/images/ps.jpg`),
                     title: 'Project Scarlett 2020',
-                    shortDesc: 'Microsoft & Xbox team announced new project name Scarlett which is coming out next year for holidays.',
-                    author: 2 // Representing authors ID
+                    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tristique magna sit amet purus. Leo a diam sollicitudin tempor id. Ut porttitor leo a diam sollicitudin tempor id. Sem viverra aliquet eget sit amet tellus cras adipiscing enim. Purus faucibus ornare suspendisse sed nisi lacus sed viverra. In aliquam sem fringilla ut. Tincidunt id aliquet risus feugiat in. Lacus laoreet non curabitur gravida arcu ac. Odio morbi quis commodo odio aenean sed adipiscing diam donec. Congue nisi vitae suscipit tellus mauris a diam maecenas. Ac odio tempor orci dapibus. Ut faucibus pulvinar elementum integer. Diam vulputate ut pharetra sit amet aliquam. Sagittis nisl rhoncus mattis rhoncus urna neque. Neque volutpat ac tincidunt vitae semper quis. Molestie a iaculis at erat pellentesque adipiscing. Convallis a cras semper auctor. Consectetur adipiscing elit duis tristique sollicitudin nibh. Massa tincidunt dui ut ornare. Condimentum vitae sapien pellentesque habitant morbi tristique senectus et netus. Convallis posuere morbi leo urna molestie. Diam ut venenatis tellus in metus. Maecenas pharetra convallis posuere morbi leo urna molestie at elementum. Ultrices vitae auctor eu augue ut lectus. Dui sapien eget mi proin. Aenean sed adipiscing diam donec adipiscing. Enim eu turpis egestas pretium aenean pharetra magna. Sit amet dictum sit amet justo donec. Semper quis lectus nulla at volutpat diam ut venenatis tellus. Aliquam eleifend mi in nulla posuere sollicitudin. Diam sollicitudin tempor id eu nisl nunc mi. Consectetur a erat nam at lectus urna. Cras pulvinar mattis nunc sed blandit libero volutpat sed. Pulvinar neque laoreet suspendisse interdum consectetur. Massa id neque aliquam vestibulum morbi blandit cursus. Blandit aliquam etiam erat velit scelerisque. Elementum nibh tellus molestie nunc. Auctor augue mauris augue neque gravida in fermentum et sollicitudin. Condimentum id venenatis a condimentum vitae. Viverra adipiscing at in tellus integer feugiat scelerisque varius morbi. Eget nunc lobortis mattis aliquam. Volutpat lacus laoreet non curabitur. ',
+                    authorName: 'Andrew Dough',
+                    authorId: 2 // Representing authors ID
                 },
                 {
                     id: 62,
+                    date: '16/05/2019',
                     image: require(`@/assets/images/cp-1.jpg`),
                     title: 'Keanu in Cyberpunk',
-                    shortDesc: 'One of the biggest surprises on E3 2019, was when Keanu Reeves himself appeared at Microsoft\'s expo right after Cyberpunk\'s trailer.',
-                    author: 1 // Representing authors ID
+                    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tristique magna sit amet purus. Leo a diam sollicitudin tempor id. Ut porttitor leo a diam sollicitudin tempor id. Sem viverra aliquet eget sit amet tellus cras adipiscing enim. Purus faucibus ornare suspendisse sed nisi lacus sed viverra. In aliquam sem fringilla ut. Tincidunt id aliquet risus feugiat in. Lacus laoreet non curabitur gravida arcu ac. Odio morbi quis commodo odio aenean sed adipiscing diam donec. Congue nisi vitae suscipit tellus mauris a diam maecenas. Ac odio tempor orci dapibus. Ut faucibus pulvinar elementum integer. Diam vulputate ut pharetra sit amet aliquam. Sagittis nisl rhoncus mattis rhoncus urna neque. Neque volutpat ac tincidunt vitae semper quis. Molestie a iaculis at erat pellentesque adipiscing. Convallis a cras semper auctor. Consectetur adipiscing elit duis tristique sollicitudin nibh. Massa tincidunt dui ut ornare. Condimentum vitae sapien pellentesque habitant morbi tristique senectus et netus. Convallis posuere morbi leo urna molestie. Diam ut venenatis tellus in metus. Maecenas pharetra convallis posuere morbi leo urna molestie at elementum. Ultrices vitae auctor eu augue ut lectus. Dui sapien eget mi proin. Aenean sed adipiscing diam donec adipiscing. Enim eu turpis egestas pretium aenean pharetra magna. Sit amet dictum sit amet justo donec. Semper quis lectus nulla at volutpat diam ut venenatis tellus. Aliquam eleifend mi in nulla posuere sollicitudin. Diam sollicitudin tempor id eu nisl nunc mi. Consectetur a erat nam at lectus urna. Cras pulvinar mattis nunc sed blandit libero volutpat sed. Pulvinar neque laoreet suspendisse interdum consectetur. Massa id neque aliquam vestibulum morbi blandit cursus. Blandit aliquam etiam erat velit scelerisque. Elementum nibh tellus molestie nunc. Auctor augue mauris augue neque gravida in fermentum et sollicitudin. Condimentum id venenatis a condimentum vitae. Viverra adipiscing at in tellus integer feugiat scelerisque varius morbi. Eget nunc lobortis mattis aliquam. Volutpat lacus laoreet non curabitur. ',
+                    authorName: 'John Doe',
+                    authorId: 1 // Representing authors ID
                 }
             ]
         }
@@ -61,8 +67,12 @@ export default {
     },
     // Methods
     methods: {
+        // Convert Name of the article to link slug
         nameToLink: (articleName) => {
             return articleName.split(" ").join("-").toLowerCase();
+        },
+        shortenContent: (article) => {
+            return article.slice(0, 100);
         }
     }
 };
