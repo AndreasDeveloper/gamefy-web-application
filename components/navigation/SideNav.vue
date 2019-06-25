@@ -5,7 +5,7 @@
         </div>
         <div class="nav-icons-wrap">
             <a href="/" class="nav-icons-wrap__nLink" ref="icon1"><i class="icon ion-ios-home"></i></a>
-            <a href="/user-profile" class="nav-icons-wrap__nLink" ref="icon2" no-prefetch><i class="icon ion-md-contact"></i></a>
+            <a href="/user-profile" class="nav-icons-wrap__nLink" ref="icon2"><i class="icon ion-md-contact"></i></a>
             <a href="/products" class="nav-icons-wrap__nLink" ref="icon3"><i class="icon ion-logo-game-controller-b"></i></a>
         </div>
         <div class="bottom-icons-wrap">
@@ -53,7 +53,9 @@ export default {
     align-items: center;
     font-size: 3.8rem;
     position: fixed;
-    @media only screen and (max-width: $bp-small) { min-height: 10vh; width: 100%; flex-direction: row; z-index: 999; padding: 0 1rem; }
+    // - Media Queries - \\
+    @media only screen and (max-width: $bp-small) { min-height: 9vh; width: 100%; flex-direction: row; align-items: unset; z-index: 999; padding: 0 1rem; }
+    @media only screen and (max-width: $bp-vsmall-3b) { min-height: 10vh; }
 }
 
 // All Wraps and Icons
@@ -63,9 +65,11 @@ export default {
     width: 100%;
     @media only screen and (max-width: $bp-small) { flex-direction: row; width: unset; }
     i { cursor: pointer; margin: 1rem 0; text-align: center;
-        @media only screen and (max-width: $bp-small) { margin: 0 1rem; }
+        @media only screen and (max-width: $bp-small) { margin: 0 1rem; padding-top: 2rem; }
     }
-    &__nLink { color: $color-white; width: 100%; text-align: center; margin: 1rem 0; }
+    &__nLink { color: $color-white; width: 100%; text-align: center; margin: 1rem 0; 
+        @media only screen and (max-width: $bp-small) { margin: 0; padding-top: 2rem; }
+    }
 }
 
 // Side Line Navigation

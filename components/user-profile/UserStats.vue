@@ -6,7 +6,8 @@
             <div class="user-data">
                 <img src="~assets/images/user.jpg" alt="User Photo" class="user-data__image">
                 <p class="user-data__short-bio">Working as a Software Engineer. Aside of software, i adore cloud and any related service to it.</p>
-                <a href="#" class="btn-1 btn-fullStory">Full Story</a>
+                <a href="#" class="btn-1 btn-fullStory" @click="showModal">Full Story</a>
+                <AuthorModal v-show="isModalVisible" @close="closeModal" />
             </div>
             <div class="articles-membership">
                 <div class="articles-membership__articles-block data-block">
@@ -38,12 +39,28 @@
 <script>
 // Importing Components
 import BlockHeader from '../BlockHeader';
+import AuthorModal from '../modals/AuthorModal';
 
 export default {
     name: 'UserStats',
+    data() {
+        return {
+            isModalVisible: false
+        }
+    },
     // Components
     components: {
-        BlockHeader
+        BlockHeader,
+        AuthorModal
+    },
+    // Methods
+    methods: {
+        showModal() {
+            this.isModalVisible = true;
+        },
+        closeModal() {
+            this.isModalVisible = false;
+        }
     }
 };
 </script>

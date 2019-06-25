@@ -49,7 +49,12 @@ export default {
     // align-items: flex-start !important;
     align-items: unset !important;
     margin-top: 4rem;
-    > h2 { text-transform: none; color: $color-font-2; margin-bottom: 1rem; font-weight: 300; }
-    > span { width: 6rem; height: .3rem; background-color: $color-primary; margin-left: .5rem; }
+    > h2 { text-transform: none; color: $color-font-2; margin-bottom: 1rem; font-weight: 300;
+        @media only screen and (max-width: $bp-small) { text-align: center; } 
+    }
+    > span { width: 6rem; height: .3rem; background-color: $color-primary; margin-left: .5rem; 
+        @media only screen and (max-width: $bp-small) { margin: 0 auto;}
+    }
+    @media only screen and (max-width: $bp-small) { text-align: unset !important; }
 }
 </style>

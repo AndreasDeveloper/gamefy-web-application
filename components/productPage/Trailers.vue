@@ -21,7 +21,7 @@
 <script>
 // Importing Components
 import SectionHeader from '../SectionHeader';
-import Modal from '../Modal';
+import Modal from '../modals/Modal';
 
 export default {
     name: 'Trailers',

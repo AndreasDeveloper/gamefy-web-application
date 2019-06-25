@@ -3,11 +3,8 @@
     <div class="modal-backdrop">
         <i class="icon ion-ios-close close-icon" @click="close(); stop();"></i>
         <div class="modal">
-            <!-- <iframe width="900" height="500"
-                v-bind:src="videoLink">
-            </iframe> -->
         <no-ssr placeholder="Loading..">
-            <youtube :video-id="videoLink" ref="youtube" player-width="750" player-height="400" @ready="ready"></youtube>
+            <youtube :video-id="videoLink" ref="youtube" player-width="750" player-height="400" @ready="ready" class="yt-player"></youtube>
         </no-ssr>
         </div>
     </div>
@@ -46,7 +43,7 @@ export default {
 
 <style lang="scss" scoped>
 // Importing SASS Components
-@import './sass/main.scss';
+@import '../sass/main.scss';
 
 .modal-backdrop {
     position: fixed;
@@ -86,5 +83,12 @@ export default {
 .modal-fade-enter-active,
 .modal-fade-leave-active {
     transition: opacity .3s ease
+}
+
+iframe#youtube-player-3 {
+    @media only screen and (max-width: $bp-small) {
+        width: 300px !important;
+        height: 300px !important;
+    }
 }
 </style>

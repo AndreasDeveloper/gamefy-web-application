@@ -90,20 +90,22 @@ export default {
     height: 532px;
     // On Hover
     &:hover {
-        .nat-block-onHover { display: flex; }
+        .nat-block-onHover { display: flex; opacity: 1; }
     }
     // - Media Queries - \\
     @media only screen and (max-width: $bp-desktop) { width: 350px; height: 422px; }
     @media only screen and (max-width: $bp-small) { margin-bottom: 4rem; width: 250px; height: 322px; }
 }
 .nat-block-onHover {
-    display: none;
+    opacity: 0;
+    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     background-color: $color-white;
     height: 100%;
     padding: 2rem 1.5rem;
+    transition: all .2s ease-in-out;
     // Header - AVAILABLE
     &__header {
         color: $color-font-1;

@@ -19,6 +19,7 @@
 import ArticleComp from '@/components/articlePage/ArticleComp';
 
 export default {
+    scrollToTop: true, // Make sure page is scrolled to the top
     // Components
     components: {
         ArticleComp
