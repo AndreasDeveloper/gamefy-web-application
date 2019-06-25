@@ -14,7 +14,7 @@
             Already most anticipated game for 2019, Death Stranding, revealed new gameplay slash story trailer that features vehicles,
             combat, stealth and much more.
           </p>
-          <a href="#" class="btn-readMore article-info-wrap__button">Read More</a>
+          <a href="#" class="btn-1 btn-readMore article-info-wrap__button">Read More</a>
         </div>
       </div>
       <!-- HEADER | END -->

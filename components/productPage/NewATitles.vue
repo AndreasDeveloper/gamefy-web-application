@@ -12,7 +12,7 @@
                     <h2 class="nat-block-onHover__title">{{ title.name }}</h2>
                     <h4 class="nat-block-onHover__titleGenre">{{ title.genre1 }} / {{ title.genre2 }}</h4>
                     <p class="nat-block-onHover__titleDesc">{{ title.description }}</p>
-                    <a href="#" class="btn-readMoreGray">Read More <i class="icon ion-ios-arrow-forward"></i></a>
+                    <a href="#" class="btn-1 btn-readMoreGray">Read More <i class="icon ion-ios-arrow-forward"></i></a>
                 </div>
             </div>
         </div>

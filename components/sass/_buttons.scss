@@ -4,29 +4,21 @@
 
 // Article in Header Button
 .btn-readMore {
-    display: inline-block;
-    border-radius: 12rem;
     border: 1px solid $color-primary;
     color: $color-primary;
     font-size: 1.4rem;
     font-weight: 300;
     padding: .8rem;
     padding-top: 1rem;
-    text-decoration: none;
     width: 22%; 
-    text-align: center;
-    text-transform: uppercase;
     // - Media Queries - \\
     @media only screen and (max-width: $bp-small) { width: 40%; font-size: 1rem; }
 }
 
 // View All Button
 .btn-viewAll {
-    display: inline-block;
     padding: 1rem;
     padding-top: 1.2rem;
-    text-decoration: none;
-    text-transform: uppercase;
     text-align: center;
     border: 1px solid $color-font-2;
     border-radius: 10rem;
@@ -42,33 +34,25 @@
 
 // More Button In Cards
 .btn-more {
-    display: inline-block;
     padding: 1rem;
     background-color: $color-primary;
     color: $color-white;
     font-size: 1.4rem;
     font-weight: 400;
     border-radius: 8rem;
-    text-decoration: none;
-    text-transform: uppercase;
-    text-align: center;
     width: 32%;
     i { margin-left: .5rem; }
     // On Hover
     &:hover { 
         i { margin-left: .8rem; }
     }
-    & i { margin-left: .3rem; transition: margin-left .2s; }
+    & i { margin-left: .5rem; transition: margin-left .2s; }
     // - Media Queries - \\
     @media only screen and (max-width: $bp-medium) { width: 40%; }
 }
 
 // Author Button Blue
 .btn-author {
-    display: inline-block;
-    text-decoration: none;
-    text-transform: uppercase;
-    text-align: center;
     padding: .8rem;
     padding-top: 1rem;
     color: $color-white;
@@ -100,10 +84,6 @@
 
 // Button Full Story & Button More Details
 .btn-fullStory, .btn-moreDetails {
-    display: inline-flex;
-    align-items: center;
-    text-decoration: none;
-    text-transform: uppercase;
     padding: 1.3rem 2rem 1rem 2rem;
     color: $color-primary;
     font-size: 1.3rem;
@@ -123,9 +103,6 @@
 
 // Edit Field Button
 .btn-editField {
-    display: inline-flex;
-    text-decoration: none;
-    text-transform: uppercase;
     padding: 1.2rem 2.5rem 1rem 2.5rem;
     color: $color-white;
     font-size: 1.2rem;
@@ -136,12 +113,6 @@
 
 // Button Read More | New Announced Titles Block
 .btn-readMoreGray {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    text-transform: uppercase;
-    text-align: center;
     font-weight: 300;
     padding: .8rem;
     color: $color-font-2;
@@ -153,11 +124,7 @@
 
 // Button Edit
 .btn-edit {
-    display: inline-flex;
-    align-items: center;
     padding: .8rem 2.5rem;
-    text-decoration: none;
-    text-transform: uppercase;
     background-color: $color-primary;
     border-radius: 10rem;
     box-shadow: 0 4px 4px rgba($color-black, .25);
@@ -173,8 +140,6 @@
 
 // Return Button
 .btn-return {
-    display: inline-flex;
-    align-items: center;
     padding: .8rem 2rem;
     text-decoration: none;
     border: 1px solid $color-white;
@@ -188,4 +153,15 @@
         i { margin-right: .8rem; }
     }
     & i { margin-right: .3rem; transition: margin-right .2s; }
+}
+
+// Button Style 1
+.btn-1 {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+    border-radius: 10rem;
 }

@@ -4,7 +4,7 @@
             <h2 class="setting-field__fieldName">{{ fieldName }}</h2>
             <h3 class="setting-field__fieldKey">{{ fieldKey }}</h3>
         </div>
-        <a href="#" class="btn-editField" v-bind:class="btnStyle">{{ btnText }}</a>
+        <a href="#" class="btn-1 btn-editField" v-bind:class="btnStyle">{{ btnText }}</a>
     </div>
 </template>
 

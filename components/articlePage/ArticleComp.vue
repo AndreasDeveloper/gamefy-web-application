@@ -6,7 +6,7 @@
                 <i class="icon ion-ios-heart"></i>
                 <i class="icon ion-ios-share-alt"></i>
             </div>
-            <nuxt-link to="/" class="btn-return returnBtn"><i class="icon ion-ios-arrow-round-back"></i> Return</nuxt-link>
+            <nuxt-link to="/" class="btn-1 btn-return returnBtn"><i class="icon ion-ios-arrow-round-back"></i> Return</nuxt-link>
             <img :src="image" :alt="`${title} article image`">
         </div>
         <div class="article">
@@ -16,7 +16,7 @@
                     <span class="article-divider"></span>
                 </div>
                 <div class="date-n-btn">
-                    <a href="#" class="btn-edit"><i class="icon ion-md-create"></i>Edit</a>
+                    <a href="#" class="btn-1 btn-edit"><i class="icon ion-md-create"></i>Edit</a>
                     <h2 class="article-topper__date">{{ datePosted }}</h2>
                 </div>
             </div>
@@ -70,6 +70,7 @@ export default {
     box-shadow: 0 4px 4px rgba($color-black, .25);
     min-height: 100vh;
     border-radius: 1rem;
+    @media only screen and (max-width: $bp-small) { margin: 5rem 2rem 4rem 2rem; }
 }
 // Article Image
 .image-wrap > img { width: 100%; border-radius: 1rem 1rem 0 0; }
@@ -109,11 +110,16 @@ export default {
         border-radius: 10rem;
         margin-left: 1rem;
     }
+    @media only screen and (max-width: $bp-small) { flex-direction: column; }
 }
 .date-n-btn { display: flex; align-items: center; }
-.title-n-div { display: flex; flex-direction: column; }
+.title-n-div { display: flex; flex-direction: column; 
+    @media only screen and (max-width: $bp-small) { text-align: center; margin-bottom: 3rem; }
+}
 // Article Divider
-.article-divider { width: 10rem; height: .2rem; background-color: $color-primary; margin-top: 2rem; }
+.article-divider { width: 10rem; height: .2rem; background-color: $color-primary; margin-top: 2rem;
+    @media only screen and (max-width: $bp-small) { margin: 0 auto; margin-top: 2rem; }
+}
 // Actual Text in Article
 .article-main-content {
     display: flex;
@@ -131,6 +137,7 @@ export default {
     align-items: center;
     width: 100%;
     margin-top: 5rem;
+    @media only screen and (max-width: $bp-small) { flex-direction: column; }
 }
 // Posted By Block
 .posted-by-block {
@@ -151,9 +158,12 @@ export default {
     &__authorName { font-size: 2.5rem; font-weight: 400; margin-bottom: .2rem; }
     // Author Short Bio
     &__authorBio { font-size: 2rem; font-weight: 300; }
+    @media only screen and (max-width: $bp-small) { width: 100%; margin-bottom: 5rem; }
 }
 .pbb-userData { display: flex; flex-direction: column; margin-left: 2rem; }
-.author-data-divider { width: .1rem; height: 10rem; background-color: $color-font-1; margin: 0 5rem; }
+.author-data-divider { width: .1rem; height: 10rem; background-color: $color-font-1; margin: 0 5rem;
+    @media only screen and (max-width: $bp-small) { display: none; }
+}
 // Genres Block
 .genres-block {
     display: grid;
@@ -173,11 +183,13 @@ export default {
         text-transform: uppercase;
         cursor: pointer;
     }
+    @media only screen and (max-width: $bp-small) { width: 100%; }
 }
 // Return Button
 .returnBtn {
     position: absolute;
     top: 3%;
     left: 3%;
+    text-transform: unset;
 }
 </style>

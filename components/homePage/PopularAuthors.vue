@@ -9,7 +9,7 @@
                 <img v-bind:src="author.authorImage" alt="Popular Author Image" class="pa-card__image">
                 <h2>{{ author.authorName }}</h2>
                 <p>{{ author.shortBio }}</p>
-                <a href="#" class="btn-more">More <i class="icon ion-ios-arrow-forward"></i></a>
+                <a href="#" class="btn-1 btn-more">More <i class="icon ion-ios-arrow-forward"></i></a>
             </div>
 
             <!-- <div class="pa-card">

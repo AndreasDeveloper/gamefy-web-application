@@ -4,7 +4,7 @@
             <h2>{{ blockHeaderName }}</h2>
             <span></span>
         </div>
-        <a href="#" class="btn-moreDetails">{{ btnText }} <span v-html="plusIcon"></span></a>
+        <a href="#" class="btn-1 btn-moreDetails">{{ btnText }} <span v-html="plusIcon"></span></a>
     </div>
 </template>
 

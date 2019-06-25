@@ -1,7 +1,7 @@
 <template>
     <div class="section-header-standard">
         <h2>{{ sectionName }}</h2>
-        <a href="#" class="btn-viewAll">View All</a>
+        <a href="#" class="btn-1 btn-viewAll">View All</a>
     </div>
 </template>
 
