@@ -1,5 +1,5 @@
 <template>
-    <div class="section-wrap-standard">
+    <section class="section-wrap-standard">
         <SectionHeader sectionName="Popular Titles" />
         <!-- Popular Titles Slider -->
         <div class="pt-slider">
@@ -11,7 +11,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 </template>
 
 <script>

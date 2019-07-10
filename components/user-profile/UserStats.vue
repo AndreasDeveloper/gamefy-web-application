@@ -1,6 +1,6 @@
 <template>
     <!-- MAIN USER DATA | START -->
-    <div class="data-block-wrap">
+    <section class="data-block-wrap">
         <BlockHeader blockHeaderName="Welcome Back, John" btnText="More Details" />
         <div class="main-data-wrap">
             <div class="user-data">
@@ -32,7 +32,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </section>
     <!-- MAIN USER DATA | END -->
 </template>
 

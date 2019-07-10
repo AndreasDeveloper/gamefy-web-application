@@ -1,5 +1,5 @@
 <template>
-    <div class="section-wrap-standard">
+    <section class="section-wrap-standard">
         <SectionHeader sectionName="New Announced Titles" />
 
         <div class="new-ann-titles-wrap">
@@ -16,7 +16,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 </template>
 
 <script>

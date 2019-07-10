@@ -1,5 +1,5 @@
 <template>
-    <div class="section-wrap-standard">
+    <section class="section-wrap-standard">
         <SectionHeader sectionName="Popular Authors" />
         <div class="popular-authors-cards-wrap">
 
@@ -11,35 +11,8 @@
                 <p>{{ author.shortBio }}</p>
                 <a href="#" class="btn-1 btn-more">More <i class="icon ion-ios-arrow-forward"></i></a>
             </div>
-
-            <!-- <div class="pa-card">
-                <h3>IT / TECH</h3>
-                <h4>667 Followers</h4>
-                <img src="../static/images/user.jpg" alt="Popular Author Image" class="pa-card__image">
-                <h2>John Doe</h2>
-                <p>John is a software engineer and cloud expert</p>
-                <a href="#" class="btn-more">More <i class="icon ion-ios-arrow-forward"></i></a>
-            </div>
-
-            <div class="pa-card">
-                <h3>IT / TECH</h3>
-                <h4>530 Followers</h4>
-                <img src="../static/images/user-2.jpg" alt="Popular Author Image" class="pa-card__image">
-                <h2>Andrew Dough</h2>
-                <p>Andrew is a web designer and web developer</p>
-                <a href="#" class="btn-more">More <i class="icon ion-ios-arrow-forward"></i></a>
-            </div>
-
-            <div class="pa-card">
-                <h3>MARKETING / SALES</h3>
-                <h4>500 Followers</h4>
-                <img src="../static/images/user-3.jpg" alt="Popular Author Image" class="pa-card__image">
-                <h2>Alex Ripley</h2>
-                <p>Alex is marketing expert working with tech gigants</p>
-                <a href="#" class="btn-more">More <i class="icon ion-ios-arrow-forward"></i></a>
-            </div> -->
         </div>
-    </div>
+    </section>
 </template>
 
 <script>

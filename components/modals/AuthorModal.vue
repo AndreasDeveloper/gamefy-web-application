@@ -69,6 +69,7 @@ export default {
         right: 5%;
         font-size: 3rem;
         cursor: pointer;
+        color: $color-primary;
     }
     // User Name
     &__name { font-size: 3rem; font-weight: 400; }

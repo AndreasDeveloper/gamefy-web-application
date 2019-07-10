@@ -1,5 +1,5 @@
 <template>
-    <div class="article-wrap">
+    <article class="article-wrap">
         <div class="image-wrap">
             <div class="image-wrap__icons">
                 <i class="icon ion-ios-bookmark"></i>
@@ -38,7 +38,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </article>
 </template>
 
 <script>

@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div class="main-content">
+    <main class="main-content">
       <!-- HEADER | START -->
-      <div class="header">
+      <header class="header">
         <div class="posted-by-wrap">
           <img src="~assets/images/user.jpg">
           <h2>Posted by John Doe</h2>
@@ -16,7 +16,7 @@
           </p>
           <a href="#" class="btn-1 btn-readMore article-info-wrap__button">Read More</a>
         </div>
-      </div>
+      </header>
       <!-- HEADER | END -->
 
       <!-- POPULAR AUTHORS | START -->
@@ -26,7 +26,7 @@
       <!-- RECENT ARTICLES | START -->
       <RecentArticles />
       <!-- RECENT ARTICLES | END -->
-    </div>
+    </main>
   </div>
 </template>
 

@@ -1,5 +1,5 @@
 <template>
-    <div class="main-content">
+    <main class="main-content">
         <ArticleComp 
             :image="article.image" 
             :title="article.title" 
@@ -11,7 +11,7 @@
             :articleGenre="article.genres"
             :articleId="article.id" 
         />
-    </div>
+    </main>
 </template>
 
 <script>

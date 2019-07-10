@@ -1,12 +1,12 @@
 <template>
-    <div class="section-wrap-standard">
+    <section class="section-wrap-standard">
         <SectionHeader sectionName="Trailers" />
         <!-- Trailers Block -->
         <div class="trailers-wrap">
             <div class="trailer-block" v-for="trailer in trailers" :key="trailer.id">
                 <div class="trailer-block__bk"></div>
                     <i class="icon ion-ios-play trailer-block__icon" @click="showModal"></i>
-                    <Modal v-show="isModalVisible" @close="closeModal" v-bind:videoLink="trailer.link" />
+                    <Modal v-show="isModalVisible" @close="closeModal" v-bind:videoLink="trailer.link" ref="tModal" />
                     <img v-bind:src="trailer.thumbnail" v-bind:alt="`${trailer.gameName} Thumbnail Cover`" class="trailer-block__image">
                 <div class="trailer-block__content">
                     <h3 class="trailer-block__content__developer">{{ trailer.developer }}</h3>
@@ -15,7 +15,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 </template>
 
 <script>

@@ -1,5 +1,5 @@
 <template>
-    <div class="section-wrap-standard">
+    <section class="section-wrap-standard">
         <SectionHeader sectionName="Recent Articles" />
         <div class="recent-article-cards-wrap">
             <!-- Button Arrow Forward -->
@@ -20,7 +20,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 </template>
 
 <script>

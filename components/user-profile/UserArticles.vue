@@ -1,6 +1,6 @@
 <template>
     <!-- RECENT ARTICLES | START -->
-    <div class="data-block-wrap">
+    <section class="data-block-wrap">
         <BlockHeader blockHeaderName="Recent Articles" btnText="New Article" v-bind:plusIcon="plusHtml" />
 
         <div class="articles-wrap">
@@ -23,7 +23,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </section>
     <!-- RECENT ARTICLES | END -->
 </template>
 

@@ -155,6 +155,41 @@
     & i { margin-right: .3rem; transition: margin-right .2s; }
 }
 
+// Login Button
+.btn-login {
+    border: none;
+    outline: none;
+    padding: 1rem;
+    background-color: $color-primary;
+    color: $color-white;
+    font-size: 1.6rem;
+    font-weight: 500;
+    text-transform: none !important;
+    cursor: pointer;
+    margin-top: 2rem;
+    transition: all .2s ease-in-out;
+    // On Hover
+    &:hover {
+        box-shadow: 0 4px 4px rgba($color-black, .25);
+    }
+}
+
+// Signup button
+.btn-signup {
+    border: 1px solid $color-white;
+    color: $color-white;
+    font-size: 1.6rem;
+    font-weight: 400;
+    text-transform: none !important;
+    padding: 1rem;
+    transition: all .2s ease-in-out;
+    // On Hover
+    &:hover {
+        color: $color-primary;
+        background-color: $color-white;
+    }
+}
+
 // Button Style 1
 .btn-1 {
     display: inline-flex;

@@ -1,9 +1,9 @@
 <template>
-    <div class="main-content">
+    <main class="main-content">
         <NewATitles />
         <PopularTitles />
         <Trailers />
-    </div>
+    </main>
 </template>
 
 <script>
