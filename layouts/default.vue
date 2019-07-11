@@ -96,4 +96,39 @@ html {
     text-align: center;
     > h2 { font-weight: 400; }
 }
+
+// Authentication Blocks
+.auth-block {
+    border-radius: 5px;
+    box-shadow: 0 4px 4px rgba($color-black, .25);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0 auto;
+    background-color: $color-white;
+    display: flex;
+    height: 50rem;
+    // Left Side
+    &__left-side {
+        background-color: $color-primary;
+        border-radius: 5px 0 0 5px;
+        color: $color-white;
+        padding: 5rem !important;
+        justify-content: center !important;
+        h2 { font-size: 2rem; font-weight: 400; margin: 2rem 0; }
+    }
+    // Right Side
+    &__right-side {
+        h1 { color: $color-primary; font-size: 2.5rem; font-weight: 800; }
+        h3 { color: $color-font-1; font-size: 1.6rem; font-weight: 300; text-decoration: underline; cursor: pointer; margin-bottom: -5rem; }
+    }
+    &__left-side, &__right-side {
+        padding: 10rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        text-align: center;
+    }
+}
 </style>
