@@ -15,7 +15,7 @@
                 <div class="ra-card__buttons-wrap">
                     <a href="#" class="btn-1 btn-author">Author</a>
                     <no-ssr>
-                    <nuxt-link v-bind:to="`article/${nameToLink(article.title)}/${article.id}`" class="btn-1 btn-readMore ra-card__buttons-wrap__readMoreBtn">Read More</nuxt-link> 
+                    <nuxt-link v-bind:to="`article/${nameToLink(article.title)}`" class="btn-1 btn-readMore ra-card__buttons-wrap__readMoreBtn">Read More</nuxt-link> 
                     </no-ssr>
                 </div>
             </div>

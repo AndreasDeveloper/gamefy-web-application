@@ -11,14 +11,27 @@
         </div>
         <!-- User State depends on if either user is logged in or not. If not logged in, buttons will be shown, otherwise, message is displayed -->
         <div class="user-state-wrap">
-            <h2>Welcome, <span>John</span></h2>
+            <nuxt-link to="/account" v-if="user" class="user-state-wrap__message">Welcome, <span>{{ user.name.split(' ')[0] }}</span></nuxt-link>
+            <div class="signup-nav-wrap" v-else>
+                <h2>Not a User?</h2>
+                <nuxt-link to="/signup" class="btn-signup btn-signup--empty">Signup</nuxt-link>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
+// Importing Vuex
+import { mapActions } from 'vuex';
+
 export default {
-    name: 'TopNav'
+    name: 'TopNav',
+    // Computed
+    computed: {
+        user() {
+            return this.$store.state.auth ? this.$store.state.auth.user : null;
+        }
+    }
 };
 </script>
 
@@ -86,13 +99,15 @@ export default {
 
 // User State Wrapper
 .user-state-wrap {
-    cursor: pointer;
-    h2 {
+    &__message, h2 {
         color: $color-font-1;
         font-size: 1.8rem;
         font-weight: 300;
+        margin: 0 2rem;
         span { text-decoration: underline; }
     }
 }
+
+.signup-nav-wrap { display: flex; align-items: center; }
 
 </style>

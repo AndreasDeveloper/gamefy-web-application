@@ -5,32 +5,53 @@
         </div>
         <div class="nav-icons-wrap">
             <a href="/" class="nav-icons-wrap__nLink" ref="icon1"><i class="icon ion-ios-home"></i></a>
-            <a href="/user-profile" class="nav-icons-wrap__nLink" ref="icon2"><i class="icon ion-md-contact"></i></a>
+            <a href="/account" class="nav-icons-wrap__nLink" ref="icon2"><i class="icon ion-md-contact"></i></a>
             <a href="/products" class="nav-icons-wrap__nLink" ref="icon3"><i class="icon ion-logo-game-controller-b"></i></a>
         </div>
         <div class="bottom-icons-wrap">
             <i class="icon ion-ios-information-circle"></i>
-            <i class="icon ion-ios-log-out"></i>
+            <i v-if="user" class="icon ion-ios-log-out" @click="logoutUser"></i>
+            <nuxt-link to="/login" v-else><i class="icon ion-ios-log-in" ></i></nuxt-link>
         </div>
     </div>
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex';
+
 export default {
     name: 'SideNav',
+    // Computed
+    computed: {
+        user() {
+            return this.$store.state.auth ? this.$store.state.auth.user : null;
+        }
+    },
     // Methods
     methods: {
+        // Map Actions
+        ...mapActions('auth', ['fetch', 'logout']),
         checkRoute() {
             if (this.$route.path === '/') {
                 this.$refs.icon1.classList.toggle('sideLine');
-            } else if (this.$route.path === '/user-profile') {
+            } else if (this.$route.path === '/account') {
                 this.$refs.icon2.classList.toggle('sideLine');
             } else if (this.$route.path === '/products') {
                 this.$refs.icon3.classList.toggle('sideLine');
             }
+        },
+        async checkUser() {
+            const user = await this.fetch();
+        },
+        async logoutUser() {
+            await this.logout();
         }
     },
-    // Lifecycle Methods - Mounted
+    // Lifecycle Method - Created
+    created() {
+        this.checkUser();
+    },
+    // Lifecycle Method - Mounted
     mounted() {
         this.checkRoute();
     }
@@ -64,7 +85,7 @@ export default {
     flex-direction: column;
     width: 100%;
     @media only screen and (max-width: $bp-small) { flex-direction: row; width: unset; }
-    i { cursor: pointer; margin: 1rem 0; text-align: center;
+    i, a { cursor: pointer; margin: 1rem 0; text-align: center; color: $color-white;
         @media only screen and (max-width: $bp-small) { margin: 0 1rem; padding-top: 2rem; }
     }
     &__nLink { color: $color-white; width: 100%; text-align: center; margin: 1rem 0; 

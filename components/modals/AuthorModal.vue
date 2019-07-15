@@ -4,18 +4,18 @@
             <div class="author-modal">
                 <i class="icon ion-ios-close author-modal__close-icon" @click="close()"></i>
                 <h2 class="author-modal__name">John Doe</h2>
-                <h3 class="author-modal__role">Software Engineer & Cloud Expert</h3>
+                <h3 class="author-modal__role">{{ userBio }}</h3>
                 <span class="author-modal__divider"></span>
-                <p class="author-modal__bio">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Magna eget est lorem ipsum dolor sit amet. Et ultrices neque ornare aenean. Egestas tellus rutrum tellus pellentesque eu tincidunt tortor aliquam. Sed cras ornare arcu dui vivamus arcu felis bibendum. Quis imperdiet massa tincidunt nunc pulvinar. Porttitor massa id neque aliquam vestibulum morbi blandit. Eros in cursus turpis massa tincidunt dui ut ornare lectus. Habitant morbi tristique senectus et netus et malesuada fames. Nunc scelerisque viverra mauris in aliquam. Sapien et ligula ullamcorper malesuada. Et magnis dis parturient montes nascetur ridiculus mus mauris vitae. Nisi porta lorem mollis aliquam ut. Massa sed elementum tempus egestas. Purus in massa tempor nec feugiat nisl. Nibh tellus molestie nunc non blandit massa.</p>
+                <p class="author-modal__bio">{{ userSummary }}</p>
                 <span class="author-modal__divider"></span>
                 <div class="author-modal-links">
                     <div class="linkTo">
                         <i class="icon ion-logo-github"></i>
-                        <a href="https://www.github.com">GitHub Profile</a>
+                        <a :href="userGithub">GitHub Profile</a>
                     </div>
                     <div class="linkTo">
                         <i class="icon ion-logo-linkedin"></i>
-                        <a href="https://www.linkedin.com">LinkedIn Profile</a>
+                        <a :href="userLinkedin">LinkedIn Profile</a>
                     </div>
                 </div>
             </div>
@@ -31,7 +31,9 @@ export default {
         close() {
             this.$emit('close');
         }
-    }
+    },
+    // Props
+    props: ['userBio', 'userSummary', 'userGithub', 'userLinkedin']
 };
 </script>
 
@@ -62,6 +64,7 @@ export default {
     flex-direction: column;
     margin: 0 40rem;
     padding: 3rem;
+    width: 150rem;
     // Close Icon
     &__close-icon {
         position: absolute;

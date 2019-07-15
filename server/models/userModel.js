@@ -29,6 +29,7 @@ const userSchema = new mongoose.Schema({
     },
     longBio: {
         type: String,
+        default: 'No user summary',
         trim: true
     },
     photo: {
@@ -64,7 +65,13 @@ const userSchema = new mongoose.Schema({
         type: Boolean,
         default: true,
         select: false
-    }
+    },
+    followers: {
+        type: Number,
+        default: 0
+    },
+    userGithub: String,
+    userLinkedin: String
 });
 
 // ---- MIDDLEWARE FUNCTIONS ---- \\

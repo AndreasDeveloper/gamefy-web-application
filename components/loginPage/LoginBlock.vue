@@ -6,9 +6,9 @@
         </div>
         <div class="auth-block__right-side">
             <h1>Login To Gamefy</h1>
-            <form action="" method="" class="login-form">
-                <input type="email" placeholder="E-mail Address" class="login-form__input" required>
-                <input type="password" placeholder="Password" class="login-form__input" required>
+            <form class="login-form" @submit.prevent="submit">
+                <input type="email" v-model="email" placeholder="E-mail Address" class="login-form__input" required>
+                <input type="password" v-model="password" placeholder="Password" class="login-form__input" required>
                 <button type="submit" class="btn-login btn-1">Login</button>
             </form>
             <h3>Can't access your account?</h3>
@@ -17,8 +17,31 @@
 </template>
 
 <script>
+// Importing Components
+import { mapGetters, mapActions } from 'vuex';
+import { showAlert } from '@/components/alerts/alerts.js';
+
 export default {
-    name: 'LoginBlock'
+    name: 'LoginBlock',
+    // Data
+    data() {
+        return {
+            email: '',
+            password: ''
+        }
+    },
+    // Methods
+    methods: {
+        // Map Actions
+        ...mapActions('auth', ['fetch', 'login']),
+        // Submit Method
+        async submit() {
+            const storeLogin = await this.login({
+                email: this.email,
+                password: this.password
+            });
+        }
+    }
 };
 </script>
 

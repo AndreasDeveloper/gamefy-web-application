@@ -1,13 +1,13 @@
 <template>
     <!-- MAIN USER DATA | START -->
     <section class="data-block-wrap">
-        <BlockHeader blockHeaderName="Welcome Back, John" btnText="More Details" />
+        <BlockHeader v-if="user" :blockHeaderName="`Welcome Back, ${user.name.split(' ')[0]}`" btnText="More Details" />
         <div class="main-data-wrap">
             <div class="user-data">
                 <img src="~assets/images/user.jpg" alt="User Photo" class="user-data__image">
-                <p class="user-data__short-bio">Working as a Software Engineer. Aside of software, i adore cloud and any related service to it.</p>
+                <p class="user-data__short-bio" v-if="user">{{ user.shortBio }}</p>
                 <a href="#" class="btn-1 btn-fullStory" @click="showModal">Full Story</a>
-                <AuthorModal v-show="isModalVisible" @close="closeModal" />
+                <AuthorModal v-if="user" v-show="isModalVisible" @close="closeModal" :userBio="user.shortBio" :userSummary="user.longBio" :userGithub="user.github" :userLinkedin="user.linkedin" />
             </div>
             <div class="articles-membership">
                 <div class="articles-membership__articles-block data-block">
@@ -40,12 +40,14 @@
 // Importing Components
 import BlockHeader from '../BlockHeader';
 import AuthorModal from '../modals/AuthorModal';
+// Importing Vuex
+import { mapActions, mapState } from 'vuex';
 
 export default {
     name: 'UserStats',
     data() {
         return {
-            isModalVisible: false
+            isModalVisible: false,
         }
     },
     // Components
@@ -53,8 +55,15 @@ export default {
         BlockHeader,
         AuthorModal
     },
+    // Computed
+    computed: {
+        user() {
+            return this.$store.state.auth ? this.$store.state.auth.user : null;
+        }
+    },
     // Methods
     methods: {
+        ...mapActions('auth', ['fetch']),
         showModal() {
             this.isModalVisible = true;
         },

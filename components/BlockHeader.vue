@@ -4,7 +4,7 @@
             <h2>{{ blockHeaderName }}</h2>
             <span></span>
         </div>
-        <a href="#" class="btn-1 btn-moreDetails">{{ btnText }} <span v-html="plusIcon"></span></a>
+        <a href="#" class="btn-1 btn-moreDetails" :class="{ btnOff: btnOff }">{{ btnText }} <span v-html="plusIcon"></span></a>
     </div>
 </template>
 
@@ -12,7 +12,7 @@
 export default {
     name: 'BlockHeader',
     // Props
-    props: ['blockHeaderName', 'btnText', 'plusIcon']
+    props: ['blockHeaderName', 'btnText', 'plusIcon', 'btnOff']
 };
 </script>
 

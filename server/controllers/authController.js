@@ -52,3 +52,107 @@ exports.signup = catchAsync(async (req, res, next) => {
     // Sending Status & JSON
     createSendToken(newUser, 201, res);
 });
+
+// POST - Login User
+exports.login = catchAsync(async (req, res, next) => {
+    // Defining Variables
+    const { email, password } = req.body;
+
+    // Check if email & password exists
+    if (!email || !password) {
+        return next(new AppError('Provide email and password', 400));
+    }
+    // Find user and get email and password fields
+    const user = await User.findOne({ email }).select('+password');
+
+    // Check if user exist and if password is correct
+    if (!user || !(await user.correctPassword(password, user.password))) {
+        return next(new AppError('Incorrect email or password', 401)); // Unathorized
+    }
+
+    // Sending Status & JSON
+    createSendToken(user, 200, res);
+});
+
+// GET - Logout User
+exports.logout = (req, res) => {
+    res.cookie('jwt', 'loggedout', {
+        expires: new Date(Date.now() + 10 * 1000),
+        httpOnly: true
+    });
+    res.status(200).json({
+        status: 'success'
+    });
+};
+
+
+// Middleware For Authorization
+exports.protect = catchAsync(async (req, res, next) => {
+    // Get the token and check if exists
+    let token;
+    if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) { // For API
+        token = req.headers.authorization.split(' ')[1];
+    } else if (req.cookies.jwt) {
+        token = req.cookies.jwt;
+    }
+    // If token doesn't exist
+    if (!token) {
+        return next(new AppError('You must be logged in', 401));
+    }
+
+    // Vefiricate Token
+    const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
+
+    // Check if user exist
+    const currentUser = await User.findById(decoded.id);
+    if (!currentUser) {
+        return next(new AppError('The user belonging to this token no longer exists', 401));
+    }
+
+    // Check if user changed password after the JWT was issued
+    if (currentUser.changePasswordAfter(decoded.iat)) { // iat - issued at
+        return next(new AppError('User password changed recently. Log in again', 401));
+    }
+
+    req.user = currentUser;
+    res.locals.user = currentUser;
+    next();
+});
+
+// Middleware For Restricting users on specific routes
+exports.restrictTo = (...roles) => {
+    return (req, res, next) => {
+        if (!roles.includes(req.user.role)) {
+            return next(new AppError('No permission to perform this action', 403)); // 403 - Forbidden
+        }
+
+        next();
+    };
+};
+
+// Middleware For checking is user is logged in (for rendering pages)
+exports.isLoggedIn = async (req, res, next) => {
+    if (req.cookies.jwt) {
+        try {
+            // Verificate token that is stored in cookie
+            const decoded = await promisify(jwt.verify)(req.cookies.jwt, process.env.JWT_SECRET); // returns promise & awaits it right away
+
+            // Check if user exists
+            const currentUser = await User.findById(decoded.id); // decoded holds id in its payload 
+            if (!currentUser) {
+                return next();
+            }
+
+            // Check if user changed password after the JWT was issued
+            if (currentUser.changedPasswordAfter(decoded.iat)) { // iat - issued at
+                return next();
+            }
+            // There is a logged in user
+            res.locals.user = currentUser;
+            return next();
+        } catch (err) {
+            return next();
+        }
+    }
+    next();
+};

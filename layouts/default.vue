@@ -9,8 +9,8 @@
 
 <script>
 // Importing Components
-import TopNav from '../components/navigation/TopNav';
-import SideNav from '../components/navigation/SideNav';
+import TopNav from '@/components/navigation/TopNav';
+import SideNav from '@/components/navigation/SideNav';
 
 export default {
   components: {
@@ -124,11 +124,13 @@ html {
         h3 { color: $color-font-1; font-size: 1.6rem; font-weight: 300; text-decoration: underline; cursor: pointer; margin-bottom: -5rem; }
     }
     &__left-side, &__right-side {
-        padding: 10rem;
+        padding: 5rem;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         text-align: center;
     }
+    // -- Media Queries -- \\
+    @media only screen and (max-width: $bp-desktop) { top: 55%; }
 }
 </style>

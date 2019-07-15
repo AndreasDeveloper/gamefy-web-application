@@ -131,6 +131,7 @@
     color: $color-white;
     font-size: 1.6rem;
     transition: all .2s ease-in-out;
+    cursor: pointer;
     i { margin-right: .5rem; font-size: 1.9rem; }
     // On Hover
     &:hover {
@@ -188,6 +189,17 @@
         color: $color-primary;
         background-color: $color-white;
     }
+    &--empty {
+        color: $color-primary !important;
+        border: 2px solid $color-primary;
+        border-radius: 10rem;
+        text-decoration: none;
+        padding: 1rem 2rem;
+        &:hover {
+            background-color: $color-primary;
+            color: $color-white !important;
+        }
+    }
 }
 
 // Button Style 1
@@ -198,5 +210,8 @@
     text-decoration: none;
     text-align: center;
     text-transform: uppercase;
+    outline: none;
     border-radius: 10rem;
 }
+
+.btnOff { display: none; }

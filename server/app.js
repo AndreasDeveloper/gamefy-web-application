@@ -13,6 +13,7 @@ const globalErrorHandler = require('./controllers/errorController');
 const AppError = require('./utils/appError');
 // Importing Routers
 const userRouter = require('./routes/userRoutes');
+const viewRouter = require('./routes/viewRoutes');
 
 const app = express();
 
@@ -49,6 +50,9 @@ app.use((req, res, next) => {
 });
 
 // -- ROUTES -- \\
+
+// Express Router - View Routes
+app.use('/', viewRouter);
 
 // Express Router - API Routes
 app.use('/api/v1/users', userRouter);
