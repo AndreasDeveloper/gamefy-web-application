@@ -26,23 +26,23 @@
             </div>
         </form>
 
-        <form clas="form">
+        <form clas="form" @submit.prevent="pwSubmit">
             <div class="form-btn">
                 <BlockHeader blockHeaderName="Password Update" :btnOff="true" />
-                <button type="submit" class="btn-1 btn-edit">Update</button>
+                <button type="submit" class="btn-1 btn-edit" ref="updateBtn">Update</button>
             </div>
             <div class="user-settings-wrap" v-if="user">
                 <div class="form__group">
                     <label for="password-current" class="form__label"></label>
-                    <input id="password-current" class="form__input" type="password" placeholder='••••••••' minlength="6" required>
+                    <input id="password-current" class="form__input" type="password" v-model="passwordCurrent" placeholder='••••••••' minlength="6" required>
                 </div>
                 <div class="form__group">
                     <label for="password" class="form__label"></label>
-                    <input id="password" class="form__input" type="password" placeholder='••••••••' minlength="6" required>
+                    <input id="password" class="form__input" type="password" v-model="password" placeholder='••••••••' minlength="6" required>
                 </div>
                 <div class="form__group">
                     <label for="password-confirm" class="form__label"></label>
-                    <input id="password-confirm" class="form__input" type="password" placeholder='••••••••' minlength="6" required>
+                    <input id="password-confirm" class="form__input" type="password" v-model="passwordConfirm" placeholder='••••••••' minlength="6" required>
                 </div>
             </div>
         </form>
@@ -73,9 +73,9 @@ export default {
             email: '',
             location: '',
             shortBio: '',
-            currentPassword: '',
-            newPassword: '',
-            confirmPassword: ''
+            passwordCurrent: '',
+            password: '',
+            passwordConfirm: ''
         }
     },
     // Computed
@@ -86,8 +86,8 @@ export default {
     },
     // Methods
     methods: {
-        ...mapActions('auth', ['updateData']),
-        // Submit Method
+        ...mapActions('auth', ['updateData', 'updatePassword']),
+        // Submit Method for User Data
         async submit() {
             this.$refs.saveBtn.innerHTML = 'Saving..';
             const storeUpdate = await this.updateData({
@@ -97,6 +97,16 @@ export default {
                 shortBio: this.shortBio
             });
             this.$refs.saveBtn.innerHTML = 'Save';
+        },
+        // Submit Method for User Password
+        async pwSubmit() {
+            this.$refs.updateBtn.innerHTML = 'Updating..';
+            const storePwUpdate = await this.updatePassword({
+                passwordCurrent: this.passwordCurrent,
+                password: this.password,
+                passwordConfirm: this.passwordConfirm
+            });
+            this.$refs.saveBtn.innerHTML = 'Update';
         }
     },
     // Components

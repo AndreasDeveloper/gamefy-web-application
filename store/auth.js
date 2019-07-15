@@ -85,6 +85,24 @@ export const actions = {
             showAlert('error', err.response.data.message);
         }
     },
+    // Update User Password Action
+    async updatePassword ({ commit }, data) {
+        try {
+            const response = await axios.patch('http://localhost:3000/api/v1/users/updatePassword', data);
+            commit('set_user', response.data.user);
+            // If successfully updated
+            if (response.data.status === 'success') {
+                // Alert
+                showAlert('success', 'Password updated');
+                window.setTimeout(() => {
+                    location.assign('/account');
+                }, 1500);
+            }
+        } catch (err) {
+            // Alert
+            showAlert('error', err.response.data.message);
+        }
+    },
     // Logout Action
     async logout ({ commit }) {
         try {

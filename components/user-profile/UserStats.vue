@@ -1,13 +1,13 @@
 <template>
     <!-- MAIN USER DATA | START -->
-    <section class="data-block-wrap">
-        <BlockHeader v-if="user" :blockHeaderName="`Welcome Back, ${user.name.split(' ')[0]}`" btnText="More Details" />
+    <section class="data-block-wrap" v-if="user">
+        <BlockHeader :blockHeaderName="`Welcome Back, ${user.name.split(' ')[0]}`" btnText="More Details" />
         <div class="main-data-wrap">
             <div class="user-data">
                 <img src="~assets/images/user.jpg" alt="User Photo" class="user-data__image">
-                <p class="user-data__short-bio" v-if="user">{{ user.shortBio }}</p>
+                <p class="user-data__short-bio">{{ user.shortBio }}</p>
                 <a href="#" class="btn-1 btn-fullStory" @click="showModal">Full Story</a>
-                <AuthorModal v-if="user" v-show="isModalVisible" @close="closeModal" :userBio="user.shortBio" :userSummary="user.longBio" :userGithub="user.github" :userLinkedin="user.linkedin" />
+                <AuthorModal v-show="isModalVisible" @close="closeModal" :userBio="user.shortBio" :userSummary="user.longBio" :userGithub="user.github" :userLinkedin="user.linkedin" />
             </div>
             <div class="articles-membership">
                 <div class="articles-membership__articles-block data-block">

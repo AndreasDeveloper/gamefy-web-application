@@ -130,6 +130,25 @@ exports.restrictTo = (...roles) => {
     };
 };
 
+// Middleware for updating password - logged in users
+exports.updatePassword = catchAsync(async (req, res, next) => {
+    // Get user 
+    const user = await User.findById(req.user.id).select('+password');
+  
+    // Check if posted password is correct
+    if (!(await user.correctPassword(req.body.passwordCurrent, user.password))) {
+        return next(new AppError('Current password is incorrect', 401));
+    }
+  
+    // If password is correct, update the password
+    user.password = req.body.password;
+    user.passwordConfirm = req.body.passwordConfirm;
+    await user.save();
+  
+    // Sending Status & JSON
+    createSendToken(user, 200, res);
+});
+
 // Middleware For checking is user is logged in (for rendering pages)
 exports.isLoggedIn = async (req, res, next) => {
     if (req.cookies.jwt) {

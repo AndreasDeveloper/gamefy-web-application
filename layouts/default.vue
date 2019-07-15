@@ -121,7 +121,7 @@ html {
     // Right Side
     &__right-side {
         h1 { color: $color-primary; font-size: 2.5rem; font-weight: 800; }
-        h3 { color: $color-font-1; font-size: 1.6rem; font-weight: 300; text-decoration: underline; cursor: pointer; margin-bottom: -5rem; }
+        h3 { color: $color-font-1; font-size: 1.6rem; font-weight: 300; text-decoration: underline; cursor: pointer; }
     }
     &__left-side, &__right-side {
         padding: 5rem;

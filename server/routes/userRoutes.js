@@ -14,6 +14,7 @@ router.get('/logout', authController.logout);
 router.use(authController.protect); 
 // User Data
 router.get('/account', userController.getAccount, userController.getUser);
+router.patch('/updatePassword', authController.updatePassword);
 router.patch('/updateAccount', userController.updateAccount);
 
 router.use(authController.restrictTo('admin'));
