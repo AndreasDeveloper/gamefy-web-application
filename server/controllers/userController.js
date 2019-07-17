@@ -35,7 +35,7 @@ exports.updateAccount = catchAsync(async (req, res, next) => {
     }
 
     // Update user document | Filter Out
-    const filteredBody = filterObj(req.body, 'name', 'email', 'location', 'shortBio', 'longBio');
+    const filteredBody = filterObj(req.body, 'name', 'email', 'location', 'shortBio', 'longBio', 'userGithub', 'userLinkedin');
 
     // Update user document
     const updatedUser = await User.findByIdAndUpdate(req.user.id, filteredBody, { new: true, runValidators: true });

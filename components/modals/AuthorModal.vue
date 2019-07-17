@@ -11,11 +11,11 @@
                 <div class="author-modal-links">
                     <div class="linkTo">
                         <i class="icon ion-logo-github"></i>
-                        <a :href="userGithub">GitHub Profile</a>
+                        <a :href="userGithub" target="_blank">GitHub Profile</a>
                     </div>
                     <div class="linkTo">
                         <i class="icon ion-logo-linkedin"></i>
-                        <a :href="userLinkedin">LinkedIn Profile</a>
+                        <a :href="userLinkedin" target="_blank">LinkedIn Profile</a>
                     </div>
                 </div>
             </div>

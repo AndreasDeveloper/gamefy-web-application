@@ -27,6 +27,14 @@
                     <label for="longBio" class="form__label"></label>
                     <textarea id="longBio" class="form__input" v-model="longBio" :placeholder="`${user.longBio}`" required rows="5"></textarea>
                 </div>
+                <div class="form__group">
+                    <label for="userGithub" class="form__label"></label>
+                    <input id="userGithub" class="form__input" type="text" v-model="userGithub" :placeholder="`${user.userGithub}`" required>
+                </div>
+                <div class="form__group">
+                    <label for="userLinkedin" class="form__label"></label>
+                    <input id="userLinkedin" class="form__input" type="text" v-model="userLinkedin" :placeholder="`${user.userLinkedin}`" required>
+                </div>
             </div>
         </form>
 
@@ -83,6 +91,8 @@ export default {
             location: '',
             shortBio: '',
             longBio: '',
+            userGithub: '',
+            userLinkedin: '',
             passwordCurrent: '',
             password: '',
             passwordConfirm: ''
@@ -105,7 +115,9 @@ export default {
                 email: this.email,
                 location: this.location,
                 shortBio: this.shortBio,
-                longBio: this.longBio
+                longBio: this.longBio,
+                userGithub: this.userGithub,
+                userLinkedin: this.userLinkedin
             });
             this.$refs.saveBtn.innerHTML = 'Save';
         },
@@ -162,7 +174,15 @@ export default {
     margin-top: 2.5rem;
     display: flex;
     align-items: center;
-    > button { border: none; margin-left: 2.5rem; margin-top: -.5rem; }
+    > button { border: none; margin-left: 2.5rem; margin-top: -.5rem; 
+        @media only screen and (max-width: $bp-small) {
+            margin-left: 0;
+        }
+    }
+    // - Media Queries - \\
+    @media only screen and (max-width: $bp-small) {
+        flex-direction: column;
+    }
 }
 
 // Main Wrapper
@@ -182,6 +202,14 @@ export default {
         @media only screen and (max-width: $bp-small) { margin-top: 2rem; }
     }
     // - Media Queries - \\
-    @media only screen and (max-width: $bp-small) { display: block; }
+    @media only screen and (max-width: $bp-small) {
+        display: block; 
+        margin: 0;
+        text-align: center;
+    }
+}
+
+.section-header-standard {
+    @media only screen and (max-width: $bp-small) { margin-right: 0 !important; }
 }
 </style>

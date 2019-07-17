@@ -7,7 +7,7 @@
                 <img src="~assets/images/user.jpg" alt="User Photo" class="user-data__image">
                 <p class="user-data__short-bio">{{ user.shortBio }}</p>
                 <a href="#" class="btn-1 btn-fullStory" @click="showModal">Full Story</a>
-                <AuthorModal v-show="isModalVisible" @close="closeModal" :userBio="user.shortBio" :userSummary="user.longBio" :userGithub="user.github" :userLinkedin="user.linkedin" />
+                <AuthorModal v-show="isModalVisible" @close="closeModal" :userBio="user.shortBio" :userSummary="user.longBio" :userGithub="user.userGithub" :userLinkedin="user.userLinkedin" />
             </div>
             <div class="articles-membership">
                 <div class="articles-membership__articles-block data-block">
