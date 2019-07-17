@@ -8,8 +8,11 @@ const router = express.Router();
 
 // Routes
 
+router.get('/', authController.isLoggedIn);
+// GET - Login Page
+router.get('/login', authController.isLoggedIn);
 // GET - User Account
-router.get('/account', authController.protect);
+router.get('/account', authController.isLoggedIn, viewsController.getAccountPage);
 
 // Exporting View Router
 module.exports = router;

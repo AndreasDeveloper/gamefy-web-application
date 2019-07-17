@@ -16,6 +16,7 @@ router.use(authController.protect);
 router.get('/account', userController.getAccount, userController.getUser);
 router.patch('/updatePassword', authController.updatePassword);
 router.patch('/updateAccount', userController.updateAccount);
+router.delete('/deleteAccount', userController.deleteAccount);
 
 router.use(authController.restrictTo('admin'));
 // User Routes - API

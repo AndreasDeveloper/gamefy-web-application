@@ -1,5 +1,6 @@
 /* eslint-disable */
 
+// Importing Files
 import axios from 'axios';
 import { showAlert } from '../components/alerts/alerts';
 
@@ -112,6 +113,21 @@ export const actions = {
         } catch (err) {
             // Alert
             showAlert('error', 'Error logging out. Try again');
+        }
+    },
+    // Delete User Action
+    async deleteAccount ({ commit }) {
+        try {
+            await axios.delete('http://localhost:3000/api/v1/users/deleteAccount');
+            commit('reset_user');
+            // Alert
+            showAlert('success', 'Successfully deleted your account');
+            window.setTimeout(() => {
+                location.assign('/');
+            }, 1500);
+        } catch (err) {
+            // Alert
+            showAlert('error', 'Error deleting your account. Try again');
         }
     }
 };

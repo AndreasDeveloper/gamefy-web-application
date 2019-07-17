@@ -2,6 +2,7 @@
     <div class="side-nav-wrap">
         <div class="hamburger-icon-wrap">
             <i class="icon ion-ios-menu"></i>
+            <i class="icon ion-ios-add" v-if="user"></i>
         </div>
         <div class="nav-icons-wrap">
             <a href="/" class="nav-icons-wrap__nLink" ref="icon1"><i class="icon ion-ios-home"></i></a>

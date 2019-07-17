@@ -35,7 +35,7 @@ exports.updateAccount = catchAsync(async (req, res, next) => {
     }
 
     // Update user document | Filter Out
-    const filteredBody = filterObj(req.body, 'name', 'email', 'location', 'shortBio');
+    const filteredBody = filterObj(req.body, 'name', 'email', 'location', 'shortBio', 'longBio');
 
     // Update user document
     const updatedUser = await User.findByIdAndUpdate(req.user.id, filteredBody, { new: true, runValidators: true });
@@ -52,6 +52,20 @@ exports.updateAccount = catchAsync(async (req, res, next) => {
 // GET - Specific User
 exports.getUser = factory.getOne(User);
 
+// DELETE - Currently Logged in user
+exports.deleteAccount = catchAsync(async (req, res, next) => {
+    await User.findByIdAndUpdate(req.user.id, { active: false });
+    // Removing Cookie
+    res.cookie('jwt', 'deleted', {
+        expires: new Date(Date.now() + 2 * 1000),
+        httpOnly: true
+    });
+    // Sending Status & JSON
+    res.status(204).json({ 
+        status: 'success',
+        data: null
+    });
+});
 
 
 // -- API Handlers -- \\

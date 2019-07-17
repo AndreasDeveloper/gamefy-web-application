@@ -23,6 +23,10 @@
                     <label for="shortBio" class="form__label"></label>
                     <input id="shortBio" class="form__input" type="text" v-model="shortBio" :placeholder="`${user.shortBio}`" required>
                 </div>
+                <div class="form__group">
+                    <label for="longBio" class="form__label"></label>
+                    <textarea id="longBio" class="form__input" v-model="longBio" :placeholder="`${user.longBio}`" required rows="5"></textarea>
+                </div>
             </div>
         </form>
 
@@ -50,7 +54,12 @@
         <div class="dangerous-zone-wrap section-header-standard">
             <BlockHeader blockHeaderName="Dangerous Settings" :btnOff="true" />
             <div class="user-settings-wrap">
-                <SettingsField fieldName="Delete Account" btnStyle="danger" btnText="Delete"  />
+                <div class="setting-field">
+                    <div class="keyValWrap">
+                        <h3 class="setting-field__fieldKey">Delete account</h3>
+                    </div>
+                    <a href="" class="btn-1 btn-editField danger" ref="deleteBtn" @click.prevent="deleteUser">Delete</a>
+                </div>
             </div>
         </div>
     </section>
@@ -73,6 +82,7 @@ export default {
             email: '',
             location: '',
             shortBio: '',
+            longBio: '',
             passwordCurrent: '',
             password: '',
             passwordConfirm: ''
@@ -86,7 +96,7 @@ export default {
     },
     // Methods
     methods: {
-        ...mapActions('auth', ['updateData', 'updatePassword']),
+        ...mapActions('auth', ['updateData', 'updatePassword', 'deleteAccount']),
         // Submit Method for User Data
         async submit() {
             this.$refs.saveBtn.innerHTML = 'Saving..';
@@ -94,7 +104,8 @@ export default {
                 name: this.name,
                 email: this.email,
                 location: this.location,
-                shortBio: this.shortBio
+                shortBio: this.shortBio,
+                longBio: this.longBio
             });
             this.$refs.saveBtn.innerHTML = 'Save';
         },
@@ -107,6 +118,12 @@ export default {
                 passwordConfirm: this.passwordConfirm
             });
             this.$refs.saveBtn.innerHTML = 'Update';
+        },
+        // Submit Method for Deleting User / Account
+        async deleteUser() {
+            this.$refs.deleteBtn.innerHTML = 'Deleting..';
+            await this.deleteAccount();
+            this.$refs.deleteBtn.innerHTML = 'Deleted';
         }
     },
     // Components
@@ -146,5 +163,25 @@ export default {
     display: flex;
     align-items: center;
     > button { border: none; margin-left: 2.5rem; margin-top: -.5rem; }
+}
+
+// Main Wrapper
+.setting-field {
+    display: flex;
+    justify-content: space-between;
+    margin: 1.5rem 0 1rem 0;
+    // Field Value/Key
+    &__fieldKey {
+        font-size: 2.2rem;
+        color: $color-font-2;
+        font-weight: 400;
+        border: none;
+        outline: none;
+    }
+    > a { margin-right: 0 !important; border-radius: .3rem; 
+        @media only screen and (max-width: $bp-small) { margin-top: 2rem; }
+    }
+    // - Media Queries - \\
+    @media only screen and (max-width: $bp-small) { display: block; }
 }
 </style>

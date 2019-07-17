@@ -77,7 +77,7 @@ exports.login = catchAsync(async (req, res, next) => {
 // GET - Logout User
 exports.logout = (req, res) => {
     res.cookie('jwt', 'loggedout', {
-        expires: new Date(Date.now() + 10 * 1000),
+        expires: new Date(Date.now() + 2 * 1000),
         httpOnly: true
     });
     res.status(200).json({
@@ -149,7 +149,7 @@ exports.updatePassword = catchAsync(async (req, res, next) => {
     createSendToken(user, 200, res);
 });
 
-// Middleware For checking is user is logged in (for rendering pages)
+// Middleware For checking if user is logged in (for rendering pages)
 exports.isLoggedIn = async (req, res, next) => {
     if (req.cookies.jwt) {
         try {

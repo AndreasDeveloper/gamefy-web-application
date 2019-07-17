@@ -38,10 +38,7 @@ const sendErrorDev = (err, req, res) => {
     } 
     
     // ---- Front-End Errors ----
-    return res.status(err.statusCode).render('error', {
-        title: 'Error Occured',
-        msg: err.message
-    });  
+    return res.status(err.statusCode).redirect('/error');
 };
 
 // Function for Production Errors
