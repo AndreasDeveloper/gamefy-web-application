@@ -1,3 +1,6 @@
+// Importing Dependencies
+const multer = require('multer');
+const sharp = require('sharp');
 // Importing Models
 const User = require('../models/userModel');
 // Importing Controllers
@@ -18,6 +21,44 @@ const filterObj = (obj, ...allowedFields) => {
     return newObj;
 };
 
+// ---- Image Uploads and Manipulation | Multer ---- \\
+
+// Multer Storage
+const multerStorage = multer.memoryStorage(); // Buffer save
+
+// Multer Filter | Check file type
+const multerFilter = (req, file, cb) => {
+    if (file.mimetype.startsWith('image')) {
+        cb(null, true);
+    } else {
+        cb(new AppError('File is not a image type', 400), false);
+    }
+};
+
+// Multer Upload
+const upload = multer({  
+    storage: multerStorage,
+    fileFilter: multerFilter
+});
+
+// Upload photo middleware function
+exports.uploadUserPhoto = upload.single('photo');
+// Middleware function for resizing photos
+exports.resizeUserPhoto = catchAsync(async (req, res, next) => {
+    if (!req.file) return next();
+
+    // Save filename on file object
+    req.file.filename = `user-${req.user.id}-${Date.now()}.jpeg`;
+
+    // Resize image
+    await sharp(req.file.buffer)
+        .resize(500, 500) 
+        .toFormat('jpeg')
+        .jpeg({ quality: 90 })
+        .toFile(`assets/images/users/${req.file.filename}`);
+
+    next();
+});
 
 // ---- Handler Functions for Users ---- \\
 
@@ -36,6 +77,7 @@ exports.updateAccount = catchAsync(async (req, res, next) => {
 
     // Update user document | Filter Out
     const filteredBody = filterObj(req.body, 'name', 'email', 'location', 'shortBio', 'longBio', 'userGithub', 'userLinkedin');
+    if (req.file) filteredBody.photo = req.file.filename;
 
     // Update user document
     const updatedUser = await User.findByIdAndUpdate(req.user.id, filteredBody, { new: true, runValidators: true });
@@ -43,9 +85,7 @@ exports.updateAccount = catchAsync(async (req, res, next) => {
     // Sending Status & JSON
     res.status(200).json({
         status: 'success',
-        data: {
-            user: updatedUser
-        }
+        user: updatedUser
     });
 });
 

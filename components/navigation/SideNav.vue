@@ -2,12 +2,12 @@
     <div class="side-nav-wrap">
         <div class="hamburger-icon-wrap">
             <i class="icon ion-ios-menu"></i>
-            <i class="icon ion-ios-add" v-if="user"></i>
+            <nuxt-link to="/new-article" :class="[{ 'sideLine': this.$route.path === '/new-article' }, 'nav-icons-wrap__nLink']"><i class="icon ion-ios-add" v-if="user"></i></nuxt-link>
         </div>
         <div class="nav-icons-wrap">
-            <a href="/" class="nav-icons-wrap__nLink" ref="icon1"><i class="icon ion-ios-home"></i></a>
-            <a href="/account" class="nav-icons-wrap__nLink" ref="icon2"><i class="icon ion-md-contact"></i></a>
-            <a href="/products" class="nav-icons-wrap__nLink" ref="icon3"><i class="icon ion-logo-game-controller-b"></i></a>
+            <nuxt-link to="/" :class="[{ 'sideLine': this.$route.path === '/' }, 'nav-icons-wrap__nLink']" ref="icon1"><i class="icon ion-ios-home"></i></nuxt-link>
+            <nuxt-link to="/account" :class="[{ 'sideLine': this.$route.path === '/account' }, 'nav-icons-wrap__nLink']" ref="icon2" v-if="user"><i class="icon ion-md-contact"></i></nuxt-link>
+            <nuxt-link to="/products" :class="[{ 'sideLine': this.$route.path === '/products' }, 'nav-icons-wrap__nLink']" ref="icon3"><i class="icon ion-logo-game-controller-b"></i></nuxt-link>
         </div>
         <div class="bottom-icons-wrap">
             <i class="icon ion-ios-information-circle"></i>
@@ -31,30 +31,10 @@ export default {
     // Methods
     methods: {
         // Map Actions
-        ...mapActions('auth', ['fetch', 'logout']),
-        checkRoute() {
-            if (this.$route.path === '/') {
-                this.$refs.icon1.classList.toggle('sideLine');
-            } else if (this.$route.path === '/account') {
-                this.$refs.icon2.classList.toggle('sideLine');
-            } else if (this.$route.path === '/products') {
-                this.$refs.icon3.classList.toggle('sideLine');
-            }
-        },
-        async checkUser() {
-            const user = await this.fetch();
-        },
+        ...mapActions('auth', ['logout']),
         async logoutUser() {
             await this.logout();
         }
-    },
-    // Lifecycle Method - Created
-    created() {
-        this.checkUser();
-    },
-    // Lifecycle Method - Mounted
-    mounted() {
-        this.checkRoute();
     }
 };
 </script>

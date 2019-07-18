@@ -8,6 +8,10 @@
             </div>
             <div class="user-settings-wrap" v-if="user">
                 <div class="form__group">
+                    <input class="form__upload" type="file" accept="image/*" id="photo" name="photo" @change="processFile($event)">
+                    <label for="photo">Upload photo</label>
+                </div>
+                <div class="form__group">
                     <label for="name" class="form__label"></label>
                     <input id="name" class="form__input" type="text" v-model="name" :placeholder="`${user.name}`" required>
                 </div>
@@ -66,7 +70,8 @@
                     <div class="keyValWrap">
                         <h3 class="setting-field__fieldKey">Delete account</h3>
                     </div>
-                    <a href="" class="btn-1 btn-editField danger" ref="deleteBtn" @click.prevent="deleteUser">Delete</a>
+                    <a href="" class="btn-1 btn-editField danger" ref="deleteBtn" @click.prevent="showModal">Delete</a>
+                    <ConfirmationModal v-show="isConfirmationModalVisible" @close="closeModal" @deleteMe="deleteUser" />
                 </div>
             </div>
         </div>
@@ -76,8 +81,9 @@
 
 <script>
 // Importing Components
-import BlockHeader from '../BlockHeader';
-import SettingsField from './SettingsFields';
+import BlockHeader from '@/components/BlockHeader';
+import SettingsField from '@/components/user-profile/SettingsFields';
+import ConfirmationModal from '@/components/modals/ConfirmationModal';
 // Importing Vuex
 import { mapActions, mapGetters } from 'vuex';
 
@@ -86,6 +92,7 @@ export default {
     // Data
     data() {
         return {
+            photo: '',
             name: '',
             email: '',
             location: '',
@@ -95,7 +102,9 @@ export default {
             userLinkedin: '',
             passwordCurrent: '',
             password: '',
-            passwordConfirm: ''
+            passwordConfirm: '',
+            // Confirmation Modal
+            isConfirmationModalVisible: false
         }
     },
     // Computed
@@ -110,15 +119,16 @@ export default {
         // Submit Method for User Data
         async submit() {
             this.$refs.saveBtn.innerHTML = 'Saving..';
-            const storeUpdate = await this.updateData({
-                name: this.name,
-                email: this.email,
-                location: this.location,
-                shortBio: this.shortBio,
-                longBio: this.longBio,
-                userGithub: this.userGithub,
-                userLinkedin: this.userLinkedin
-            });
+            const form = new FormData();
+            form.append('name', this.name);
+            form.append('email', this.email);
+            form.append('location', this.location);
+            form.append('shortBio', this.shortBio);
+            form.append('longBio', this.longBio);
+            form.append('userGithub', this.userGithub);
+            form.append('userLinkedin', this.userLinkedin);
+            form.append('photo', this.photo);
+            const dataUpdate = await this.updateData(form);
             this.$refs.saveBtn.innerHTML = 'Save';
         },
         // Submit Method for User Password
@@ -136,12 +146,25 @@ export default {
             this.$refs.deleteBtn.innerHTML = 'Deleting..';
             await this.deleteAccount();
             this.$refs.deleteBtn.innerHTML = 'Deleted';
+        },
+        // Confirmation Modal Methods
+        showModal() {
+            this.isConfirmationModalVisible = true;
+        },
+        closeModal() {
+            this.isConfirmationModalVisible = false;
+        },
+        // Getting Input File (image)
+        processFile(e) {
+            this.photo = e.target.files[0];
+            console.log(this.photo);
         }
     },
     // Components
     components: {
         BlockHeader,
-        SettingsField
+        SettingsField,
+        ConfirmationModal
     }
 };
 </script>

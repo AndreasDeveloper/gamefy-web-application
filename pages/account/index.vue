@@ -25,7 +25,7 @@ export default {
     // Head
     head() {
         return {
-            title: 'User Profile - Gamefy',
+            title: 'Gamefy - User Profile',
             meta: [
                 {
                     hid: 'description',

@@ -95,15 +95,4 @@ export default {
     i { margin-right: .8rem; font-size: 2rem; color: $color-font-2; }
     a { font-size: 1.4rem; color: $color-font-2; text-decoration: none; }
 }
-
-// Modal Transition
-.modal-fade-enter,
-.modal-fade-leave-active {
-    opacity: 0;
-}
-
-.modal-fade-enter-active,
-.modal-fade-leave-active {
-    transition: opacity .3s ease
-}
 </style>

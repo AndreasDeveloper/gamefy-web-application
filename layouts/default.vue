@@ -12,10 +12,23 @@
 import TopNav from '@/components/navigation/TopNav';
 import SideNav from '@/components/navigation/SideNav';
 
+import { mapActions } from 'vuex';
+
 export default {
   components: {
     TopNav,
     SideNav
+  },
+  methods: {
+    // Map Actions
+    ...mapActions('auth', ['fetch']),
+    async checkUser() {
+      const user = await this.fetch();
+    },
+  },
+  // Lifecycle Method - Created
+  created() {
+    this.checkUser();
   }
 };
 </script>
@@ -132,5 +145,16 @@ html {
     }
     // -- Media Queries -- \\
     @media only screen and (max-width: $bp-desktop) { top: 55%; }
+}
+
+// Modal Transition
+.modal-fade-enter,
+.modal-fade-leave-active {
+    opacity: 0;
+}
+
+.modal-fade-enter-active,
+.modal-fade-leave-active {
+    transition: opacity .3s ease
 }
 </style>

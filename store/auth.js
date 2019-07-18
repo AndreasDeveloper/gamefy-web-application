@@ -11,10 +11,10 @@ export const state = () => ({
 
 // Mutations
 export const mutations = {
-    set_user (store, data) {
+    SET_USER (store, data) {
         store.user = data
     },
-    reset_user (store) {
+    RESET_USER (store) {
         store.user = null
     }
 };
@@ -25,17 +25,17 @@ export const actions = {
     async fetch ({ commit }) {
         try {
             const response = await axios.get('http://localhost:3000/api/v1/users/account');
-            commit('set_user', response.data.doc);
+            commit('SET_USER', response.data.doc);
             return response;
         } catch (err) {
-            commit('reset_user');
+            commit('RESET_USER');
         }
     },
     // Login Action
     async login ({ commit }, data) {
         try {
             const response = await axios.post('http://localhost:3000/api/v1/users/login', data);
-            commit('set_user', response.data.user);
+            commit('SET_USER', response.data.user);
             // If successfully logged in
             if (response.data.status === 'success') {
                 // Alert
@@ -54,7 +54,7 @@ export const actions = {
     async signup ({ commit }, data) {
         try {
             const response = await axios.post('http://localhost:3000/api/v1/users/signup', data);
-            commit('set_user', response.data.user);
+            commit('SET_USER', response.data.user);
             // If successfully signed up
             if (response.data.status === 'success') {
                 // Alert
@@ -72,7 +72,7 @@ export const actions = {
     async updateData ({ commit }, data) {
         try {
             const response = await axios.patch('http://localhost:3000/api/v1/users/updateAccount', data);
-            commit('set_user', response.data.user);
+            commit('SET_USER', response.data.user);
             // If successfully updated
             if (response.data.status === 'success') {
                 // Alert
@@ -90,7 +90,7 @@ export const actions = {
     async updatePassword ({ commit }, data) {
         try {
             const response = await axios.patch('http://localhost:3000/api/v1/users/updatePassword', data);
-            commit('set_user', response.data.user);
+            commit('SET_USER', response.data.user);
             // If successfully updated
             if (response.data.status === 'success') {
                 // Alert
@@ -108,7 +108,7 @@ export const actions = {
     async logout ({ commit }) {
         try {
             const response = await axios.get('http://localhost:3000/api/v1/users/logout');
-            commit('reset_user');
+            commit('RESET_USER');
             if (response.data.status === 'success') location.assign('/');
         } catch (err) {
             // Alert
@@ -119,7 +119,7 @@ export const actions = {
     async deleteAccount ({ commit }) {
         try {
             await axios.delete('http://localhost:3000/api/v1/users/deleteAccount');
-            commit('reset_user');
+            commit('RESET_USER');
             // Alert
             showAlert('success', 'Successfully deleted your account');
             window.setTimeout(() => {

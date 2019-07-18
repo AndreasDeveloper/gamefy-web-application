@@ -4,7 +4,7 @@
         <BlockHeader :blockHeaderName="`Welcome Back, ${user.name.split(' ')[0]}`" btnText="More Details" />
         <div class="main-data-wrap">
             <div class="user-data">
-                <img src="~assets/images/user.jpg" alt="User Photo" class="user-data__image">
+                <img :src="getPhotoUrl(user.photo)" alt="User Photo" class="user-data__image">
                 <p class="user-data__short-bio">{{ user.shortBio }}</p>
                 <a href="#" class="btn-1 btn-fullStory" @click="showModal">Full Story</a>
                 <AuthorModal v-show="isModalVisible" @close="closeModal" :userBio="user.shortBio" :userSummary="user.longBio" :userGithub="user.userGithub" :userLinkedin="user.userLinkedin" />
@@ -58,17 +58,22 @@ export default {
     // Computed
     computed: {
         user() {
-            return this.$store.state.auth ? this.$store.state.auth.user : null;
+            return this.$store.state.auth.user;
         }
     },
     // Methods
     methods: {
         ...mapActions('auth', ['fetch']),
+        // Modal Methods
         showModal() {
             this.isModalVisible = true;
         },
         closeModal() {
             this.isModalVisible = false;
+        },
+        // Get User Photo
+        getPhotoUrl(photo) {
+            return require(`@/assets/images/users/${photo}`);
         }
     }
 };
