@@ -1,4 +1,6 @@
+// Importing SASS Files
 @import './_mixins';
+@import './_variables';
 
 // -- ALERTS -- \\
 .alert {
@@ -99,22 +101,23 @@
   }
   
   .form__upload:focus + label {
-    outline: 3px solid #55c57a;
+    outline: 3px solid $color-primary;
     outline-offset: 3px;
   }
   
   .form__upload + label {
-    color: #55c57a;
+    color: $color-primary;
+    font-size: 1.8rem;
     display: inline-block;
     text-decoration: none;
-    border-bottom: 1px solid #55c57a;
-    padding: 3px;
+    border-bottom: 1px solid $color-primary;
+    padding: 6px;
     -webkit-transition: all 0.2s;
     transition: all 0.2s;
     cursor: pointer;
   }
   .form__upload + label:hover {
-    background-color: #55c57a;
+    background-color: $color-primary;
     color: #fff;
     -webkit-box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
     box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
@@ -122,3 +125,20 @@
     transform: translateY(-2px);
   }
   
+
+// -- White Block Wrap -- \\
+.data-block-wrap {
+  min-height: 60vh;
+  margin: 4rem 15rem 4rem 8rem;
+  padding: 0 5rem;
+  padding-top: 4rem;
+  background-color: $color-white;
+  border-radius: 2rem;
+  box-shadow: 0px 4px 4px rgba($color-black, 0.25);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  // - Media Queries - \\
+  @media only screen and (max-width: $bp-largest-5) { min-height: 30vh; margin: 4rem 9rem 4rem 5rem; }
+  @media only screen and (max-width: $bp-small) { margin: 4rem 4rem; }
+}

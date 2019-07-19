@@ -71,7 +71,22 @@ const userSchema = new mongoose.Schema({
         default: 0
     },
     userGithub: String,
-    userLinkedin: String
+    userLinkedin: String,
+    membership: {
+        type: String,
+        enum: ['free', 'premium'],
+        default: 'free'
+    }
+}, {
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true }
+});
+
+// ---- Virtual Property | Virtual Populate Articles ---- \\
+userSchema.virtual('articles', {
+    ref: 'Article',
+    foreignField: 'user',
+    localField: '_id'
 });
 
 // ---- MIDDLEWARE FUNCTIONS ---- \\

@@ -157,7 +157,6 @@ export default {
         // Getting Input File (image)
         processFile(e) {
             this.photo = e.target.files[0];
-            console.log(this.photo);
         }
     },
     // Components
@@ -221,7 +220,7 @@ export default {
         border: none;
         outline: none;
     }
-    > a { margin-right: 0 !important; border-radius: .3rem; 
+    > a { margin-right: 0 !important; border-radius: .3rem;
         @media only screen and (max-width: $bp-small) { margin-top: 2rem; }
     }
     // - Media Queries - \\

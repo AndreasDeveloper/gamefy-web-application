@@ -202,6 +202,24 @@
     }
 }
 
+// Publish Button
+.btn-publish {
+    display: inline-flex;
+    outline: none;
+    border: 2px solid $color-primary;
+    background: $color-white;
+    font-weight: 500;
+    padding: 1rem;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+    letter-spacing: 2px;
+    // On Hover
+    &:hover {
+        background-color: $color-primary;
+        color: $color-white;
+    }
+}
+
 // Button Style 1
 .btn-1 {
     display: inline-flex;

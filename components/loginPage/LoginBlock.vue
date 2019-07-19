@@ -33,7 +33,7 @@ export default {
     // Methods
     methods: {
         // Map Actions
-        ...mapActions('auth', ['fetch', 'login']),
+        ...mapActions('auth', ['login']),
         // Submit Method
         async submit() {
             const storeLogin = await this.login({

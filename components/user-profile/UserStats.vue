@@ -7,7 +7,7 @@
                 <img :src="getPhotoUrl(user.photo)" alt="User Photo" class="user-data__image">
                 <p class="user-data__short-bio">{{ user.shortBio }}</p>
                 <a href="#" class="btn-1 btn-fullStory" @click="showModal">Full Story</a>
-                <AuthorModal v-show="isModalVisible" @close="closeModal" :userBio="user.shortBio" :userSummary="user.longBio" :userGithub="user.userGithub" :userLinkedin="user.userLinkedin" />
+                <AuthorModal v-show="isModalVisible" @close="closeModal" :userName="user.name" :userBio="user.shortBio" :userSummary="user.longBio" :userGithub="user.userGithub" :userLinkedin="user.userLinkedin" />
             </div>
             <div class="articles-membership">
                 <div class="articles-membership__articles-block data-block">
@@ -18,7 +18,7 @@
                 </div>
                 <div class="articles-membership__membership-block data-block">
                     <h2>Membership</h2>
-                    <h3>Current Membership: Free</h3>
+                    <h3>Current Membership: {{ user.membership }}</h3>
                 </div>
             </div>
             <div class="revenue-details">
@@ -63,7 +63,6 @@ export default {
     },
     // Methods
     methods: {
-        ...mapActions('auth', ['fetch']),
         // Modal Methods
         showModal() {
             this.isModalVisible = true;

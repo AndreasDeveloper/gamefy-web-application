@@ -3,7 +3,7 @@
         <div class="author-modal-bk">
             <div class="author-modal">
                 <i class="icon ion-ios-close author-modal__close-icon" @click="close()"></i>
-                <h2 class="author-modal__name">John Doe</h2>
+                <h2 class="author-modal__name">{{ userName }}</h2>
                 <h3 class="author-modal__role">{{ userBio }}</h3>
                 <span class="author-modal__divider"></span>
                 <p class="author-modal__bio">{{ userSummary }}</p>
@@ -33,7 +33,7 @@ export default {
         }
     },
     // Props
-    props: ['userBio', 'userSummary', 'userGithub', 'userLinkedin']
+    props: ['userName', 'userBio', 'userSummary', 'userGithub', 'userLinkedin']
 };
 </script>
 

@@ -11,6 +11,7 @@
 // Importing Components
 import TopNav from '@/components/navigation/TopNav';
 import SideNav from '@/components/navigation/SideNav';
+import axios from 'axios';
 
 import { mapActions } from 'vuex';
 
@@ -20,17 +21,17 @@ export default {
     SideNav
   },
   methods: {
-    // Map Actions
-    ...mapActions('auth', ['fetch']),
+  // Map Actions
+  ...mapActions('auth', ['fetchData']),
     async checkUser() {
-      const user = await this.fetch();
+      const user = await this.fetchData();
     },
   },
-  // Lifecycle Method - Created
-  created() {
+   // Lifecycle Method - Created
+   created() {
     this.checkUser();
   }
-};
+}
 </script>
 
 

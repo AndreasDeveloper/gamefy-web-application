@@ -74,9 +74,12 @@ export default {
 .button-wrap {
     > button {
         border: none;
+        box-shadow: 0 4px 4px rgba($color-black, .25);
         padding: .8rem 2.5rem;
+        margin: 0 1rem;
         font-size: 1.6rem;
         font-weight: 400;
+        cursor: pointer;
     }
     &__button-1 {
         border-radius: 0;

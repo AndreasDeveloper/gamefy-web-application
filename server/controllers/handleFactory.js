@@ -34,7 +34,6 @@ exports.getOne = (Model, populateOpt) => catchAsync(async (req, res, next) => {
      if (!doc) {
         return next(new AppError('No document found with given ID', 404));
     }
-
     // Sending Status & JSON
     res.status(200).json({
         status: 'success',
@@ -44,9 +43,9 @@ exports.getOne = (Model, populateOpt) => catchAsync(async (req, res, next) => {
 
 // Factory Funtion - For creating documents
 exports.createOne = Model => catchAsync(async (req, res, next) => {
+    console.log(req.body);
     // Creating new Document
     const doc = await Model.create(req.body);
-        
     // Sending Status & JSON
     res.status(201).json({ // 201 - Writen Content
         status: 'success', 

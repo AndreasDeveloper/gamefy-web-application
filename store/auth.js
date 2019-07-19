@@ -22,7 +22,7 @@ export const mutations = {
 // Actions
 export const actions = {
     // Fetch User Account
-    async fetch ({ commit }) {
+    async fetchData ({ commit }) {
         try {
             const response = await axios.get('http://localhost:3000/api/v1/users/account');
             commit('SET_USER', response.data.doc);
@@ -35,7 +35,7 @@ export const actions = {
     async login ({ commit }, data) {
         try {
             const response = await axios.post('http://localhost:3000/api/v1/users/login', data);
-            commit('SET_USER', response.data.user);
+            commit('SET_USER', response.data.data.user);
             // If successfully logged in
             if (response.data.status === 'success') {
                 // Alert

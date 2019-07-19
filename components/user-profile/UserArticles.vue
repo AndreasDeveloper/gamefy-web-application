@@ -3,26 +3,27 @@
     <section class="data-block-wrap">
         <BlockHeader blockHeaderName="Recent Articles" btnText="New Article" v-bind:plusIcon="plusHtml" />
 
-        <div class="articles-wrap">
+        <div class="articles-wrap" v-if="user && user.articles.length > 0">
             <div class="latest-article">
-                <img v-bind:src="recentArticles[0].image" v-bind:alt="recentArticles[0].imageAlt" class="latest-article__image">
+                <img  :src="getPhotoUrl(user.articles[0].coverImage)" v-bind:alt="user.articles[0].title" class="latest-article__image">
                 <div class="latest-article__content-wrap">
-                    <h3 class="latest-article__date">{{ recentArticles[0].datePosted }}</h3>
-                    <h2 class="latest-article__name">{{ recentArticles[0].name }}</h2>
-                    <p class="latest-article__content">{{ recentArticles[0].shortDesc }}</p>
+                    <h3 class="latest-article__date">{{ user.articles[0].createdAt }}</h3>
+                    <h2 class="latest-article__name">{{ user.articles[0].title }}</h2>
+                    <p class="latest-article__content">{{ user.articles[0].content }}</p>
                 </div>
             </div>
             <div class="articles-col ac-1">
-                <ArticleBlockSm v-bind:articleClass="'article-block-sm abs-top-one'" v-bind:articleImage="recentArticles[1].image" v-bind:articleImageAlt="recentArticles[1].imageAlt" v-bind:articleDate="recentArticles[1].datePosted" v-bind:articleName="recentArticles[1].name" />
-                <ArticleBlockSm v-bind:articleClass="'article-block-sm'" v-bind:articleImage="recentArticles[2].image" v-bind:articleImageAlt="recentArticles[2].imageAlt" v-bind:articleDate="recentArticles[2].datePosted" v-bind:articleName="recentArticles[2].name" />
+                <!-- <ArticleBlockSm v-bind:articleClass="'article-block-sm abs-top-one'" v-bind:articleImage="recentArticles[1].image" v-bind:articleImageAlt="recentArticles[1].imageAlt" v-bind:articleDate="recentArticles[1].datePosted" v-bind:articleName="recentArticles[1].name" />
+                <ArticleBlockSm v-bind:articleClass="'article-block-sm'" v-bind:articleImage="recentArticles[2].image" v-bind:articleImageAlt="recentArticles[2].imageAlt" v-bind:articleDate="recentArticles[2].datePosted" v-bind:articleName="recentArticles[2].name" /> -->
             </div>
             <div class="articles-col ac-2">
-                <ArticleBlockSm v-bind:articleClass="'article-block-sm abs-top-one'" v-bind:articleImage="recentArticles[3].image" v-bind:articleImageAlt="recentArticles[3].imageAlt" v-bind:articleDate="recentArticles[3].datePosted" v-bind:articleName="recentArticles[3].name" />
+                <!-- <ArticleBlockSm v-bind:articleClass="'article-block-sm abs-top-one'" v-bind:articleImage="recentArticles[3].image" v-bind:articleImageAlt="recentArticles[3].imageAlt" v-bind:articleDate="recentArticles[3].datePosted" v-bind:articleName="recentArticles[3].name" /> -->
                 <div class="more-details-block blue-block">
                     <h2>More Details</h2>
                 </div>
             </div>
         </div>
+        <h2 class="no-msg" v-else>No Articles to display</h2>
     </section>
     <!-- RECENT ARTICLES | END -->
 </template>
@@ -42,41 +43,20 @@ export default {
     // Data
     data() {
         return {
-            recentArticles: [
-                {
-                    id: 1,
-                    datePosted: '03/24/2019',
-                    name: 'E3 2019 Just Started',
-                    shortDesc: 'E3 2019 Started. Some of the gigants you will be watching this year are: EA, Ubisoft, Microsoft, Square Enix and more.',
-                    image: require(`@/assets/images/e3.jpg`),
-                    imageAlt: 'E3 2019 Cover'
-                },
-                {
-                    id: 2,
-                    datePosted: '06/01/2019',
-                    name: 'Death Stranding best details',
-                    shortDesc: 'Short Desc',
-                    image: require(`@/assets/images/hero.jpg`),
-                    imageAlt: 'Death Stranding Screenshot'
-                },
-                {
-                    id: 3,
-                    datePosted: '03/24/2019',
-                    name: 'Norman Reedus and Hideo',
-                    shortDesc: 'Short Desc',
-                    image: require(`@/assets/images/trailer-2.jpg`),
-                    imageAlt: 'Death Stranding Screenshot'
-                },
-                {
-                    id: 4,
-                    datePosted: '06/11/2019',
-                    name: 'Keanu in Cyberpunk',
-                    shortDesc: 'Short Desc',
-                    image: require(`@/assets/images/cp-1.jpg`),
-                    imageAlt: 'Johnny Silverhand'
-                }
-            ],
             plusHtml: '<i class="icon ion-ios-add"></i>'
+        }
+    },
+    // Computed
+    computed: {
+        user() {
+            return this.$store.state.auth ? this.$store.state.auth.user : null;
+        }
+    },
+    // Methods
+    methods: {
+        // Get User Photo
+        getPhotoUrl(photo) {
+            return require(`@/assets/images/articles/${photo}`);
         }
     }
 };
@@ -142,4 +122,12 @@ export default {
     @media only screen and (max-width: $bp-medium) { margin-right: 2rem; }
 }
 
+.no-msg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3rem;
+    font-weight: 300;
+}
 </style>

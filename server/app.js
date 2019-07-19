@@ -15,6 +15,7 @@ const AppError = require('./utils/appError');
 // Importing Routers
 const userRouter = require('./routes/userRoutes');
 const viewRouter = require('./routes/viewRoutes');
+const articleRouter = require('./routes/articleRoutes');
 
 const app = express();
 
@@ -62,6 +63,7 @@ app.use('/', viewRouter);
 
 // Express Router - API Routes
 app.use('/api/v1/users', userRouter);
+app.use('/api/v1/articles', articleRouter);
 
 // Handling Not Found Pages (404)
 // app.all('*', (req, res, next) => {

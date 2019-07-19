@@ -12,7 +12,7 @@ router.get('/', authController.isLoggedIn);
 // GET - Login Page
 router.get('/login', authController.isLoggedIn);
 // GET - User Account
-router.get('/account', authController.isLoggedIn, viewsController.getAccountPage);
+router.get('/account', authController.protect, viewsController.getAccountPage);
 
 // Exporting View Router
 module.exports = router;

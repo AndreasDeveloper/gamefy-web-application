@@ -68,6 +68,9 @@ exports.getAccount = (req, res, next) => { // Middleware function for setting pa
     next();
 };
 
+// GET - Specific User
+exports.getUser = factory.getOne(User, { path: 'articles' });
+
 // PATCH - Currently Authenticate User
 exports.updateAccount = catchAsync(async (req, res, next) => {
     // Display error if user POSTs password
@@ -88,9 +91,6 @@ exports.updateAccount = catchAsync(async (req, res, next) => {
         user: updatedUser
     });
 });
-
-// GET - Specific User
-exports.getUser = factory.getOne(User);
 
 // DELETE - Currently Logged in user
 exports.deleteAccount = catchAsync(async (req, res, next) => {

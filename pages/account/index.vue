@@ -41,21 +41,4 @@ export default {
 <style lang="scss" scoped>
 // Importing SASS Components
 @import '../../components/sass/main.scss';
-
-// Main Section Wrapper
-.data-block-wrap {
-  min-height: 60vh;
-  margin: 4rem 15rem 4rem 8rem;
-  padding: 0 5rem;
-  padding-top: 4rem;
-  background-color: $color-white;
-  border-radius: 2rem;
-  box-shadow: 0px 4px 4px rgba($color-black, 0.25);
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  // - Media Queries - \\
-  @media only screen and (max-width: $bp-largest-5) { min-height: 30vh; margin: 4rem 9rem 4rem 5rem; }
-  @media only screen and (max-width: $bp-small) { margin: 4rem 4rem; }
-}
 </style>
