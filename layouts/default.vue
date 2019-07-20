@@ -20,17 +20,17 @@ export default {
     TopNav,
     SideNav
   },
-  methods: {
-  // Map Actions
-  ...mapActions('auth', ['fetchData']),
-    async checkUser() {
-      const user = await this.fetchData();
-    },
-  },
-   // Lifecycle Method - Created
-   created() {
-    this.checkUser();
-  }
+  // methods: {
+  // // Map Actions
+  // ...mapActions('auth', ['fetchData']),
+  //   async checkUser() {
+  //     const user = await this.fetchData();
+  //   },
+  // },
+  //  // Lifecycle Method - Created
+  //  created() {
+  //   this.checkUser();
+  // }
 }
 </script>
 

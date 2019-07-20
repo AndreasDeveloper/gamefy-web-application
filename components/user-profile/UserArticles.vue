@@ -7,17 +7,17 @@
             <div class="latest-article">
                 <img  :src="getPhotoUrl(user.articles[0].coverImage)" v-bind:alt="user.articles[0].title" class="latest-article__image">
                 <div class="latest-article__content-wrap">
-                    <h3 class="latest-article__date">{{ user.articles[0].createdAt }}</h3>
+                    <h3 class="latest-article__date">{{ formatTime(user.articles[0].createdAt) }}</h3>
                     <h2 class="latest-article__name">{{ user.articles[0].title }}</h2>
                     <p class="latest-article__content">{{ user.articles[0].content }}</p>
                 </div>
             </div>
             <div class="articles-col ac-1">
-                <!-- <ArticleBlockSm v-bind:articleClass="'article-block-sm abs-top-one'" v-bind:articleImage="recentArticles[1].image" v-bind:articleImageAlt="recentArticles[1].imageAlt" v-bind:articleDate="recentArticles[1].datePosted" v-bind:articleName="recentArticles[1].name" />
-                <ArticleBlockSm v-bind:articleClass="'article-block-sm'" v-bind:articleImage="recentArticles[2].image" v-bind:articleImageAlt="recentArticles[2].imageAlt" v-bind:articleDate="recentArticles[2].datePosted" v-bind:articleName="recentArticles[2].name" /> -->
+                <ArticleBlockSm v-if="user.articles.length > 1" :articleClass="'article-block-sm abs-top-one'" :articleImage="getPhotoUrl(user.articles[1].coverImage)" :articleImageAlt="user.articles[1].title" :articleDate="formatTime(user.articles[1].createdAt)" :articleName="user.articles[1].title" />
+                <ArticleBlockSm v-if="user.articles.length > 2" :articleClass="'article-block-sm'" :articleImage="getPhotoUrl(user.articles[2].coverImage)" :articleImageAlt="user.articles[2].title" :articleDate="formatTime(user.articles[2].createdAt)" :articleName="user.articles[2].title" />
             </div>
             <div class="articles-col ac-2">
-                <!-- <ArticleBlockSm v-bind:articleClass="'article-block-sm abs-top-one'" v-bind:articleImage="recentArticles[3].image" v-bind:articleImageAlt="recentArticles[3].imageAlt" v-bind:articleDate="recentArticles[3].datePosted" v-bind:articleName="recentArticles[3].name" /> -->
+                <ArticleBlockSm v-if="user.articles.length > 3" v-bind:articleClass="'article-block-sm abs-top-one'" :articleImage="getPhotoUrl(user.article[3].coverImage)" :articleImageAlt="user.articles[3].title" :articleDate="user.articles[3].createdAt" :articleName="user.articles[3].title" />
                 <div class="more-details-block blue-block">
                     <h2>More Details</h2>
                 </div>
@@ -57,6 +57,10 @@ export default {
         // Get User Photo
         getPhotoUrl(photo) {
             return require(`@/assets/images/articles/${photo}`);
+        },
+        // Format Date Method
+        formatTime(date) {
+            return date.toLocaleString('en-us', { month: 'long', year: 'numeric' });
         }
     }
 };

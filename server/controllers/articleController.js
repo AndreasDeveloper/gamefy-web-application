@@ -3,6 +3,7 @@ const multer = require('multer');
 const sharp = require('sharp');
 // Importing Models
 const Article = require('../models/articleModel');
+const User = require('../models/userModel');
 // Importing Controllers
 const factory = require('./handleFactory');
 // Importing Utilities
@@ -67,3 +68,36 @@ exports.updateArticle = factory.updateOne(Article);
 
 // DELETE - Specific Article
 exports.deleteArticle = factory.deleteOne(Article);
+
+
+// - Custom Routes - \\
+exports.getRecent3Articles = catchAsync(async (req, res, next) => {
+    // Aggregation Pipeline
+    const recentArticles = await Article.aggregate([
+        {
+            $group: {
+                _id: '$createdAt',
+                title: { $first: '$title'},
+                content: { $first: '$content' },
+                coverImage: { $first: '$coverImage' },
+                author: { $push: '$user' }
+            }
+        },
+        {
+            $lookup: {
+                from: 'users',
+                localField: 'name',
+                foreignField: 'name',
+                as: 'usersArr'
+            }
+        }
+    ]);
+
+    // Sending Status & JSON
+    res.status(200).json({
+        status: 'success',
+        data: {
+            recentArticles
+        }
+    });
+});

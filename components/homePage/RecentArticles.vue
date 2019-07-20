@@ -1,13 +1,13 @@
 <template>
     <section class="section-wrap-standard">
         <SectionHeader sectionName="Recent Articles" />
-        <div class="recent-article-cards-wrap">
+        <div class="recent-article-cards-wrap" v-if="articles.length > 0">
             <!-- Button Arrow Forward -->
             <div class="btn-arrForward"><i class="icon ion-ios-arrow-forward"></i></div>
             <!-- Recent Article Card -->
-            <div class="ra-card" v-for="article in recentArticles" :key="article.id">
+            <div class="ra-card" v-for="article in articles" :key="article.id">
                 <div class="ra-card__bk"></div>
-                <img v-bind:src="article.image" alt="Article Image" class="ra-card__image">
+                <img :src="getPhotoUrl(article.coverImage)" :alt="article.title" class="ra-card__image">
                 <div class="ra-card__content">
                     <h3>{{ article.title }}</h3>
                     <p>{{ shortenContent(article.content) }}..</p>
@@ -26,56 +26,43 @@
 <script>
 // Importing Components
 import SectionHeader from '../SectionHeader';
+// Importing Vuex
+import { mapActions } from 'vuex';
 
 export default {
     name: 'RecentArticles',
-    // Data 
-    data() {
-        return {
-            recentArticles: [
-                {
-                    id: 60,
-                    date: '06/11/2019',
-                    image: require(`@/assets/images/e3.jpg`),
-                    title: 'E3 2019 Just Started',
-                    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tristique magna sit amet purus. Leo a diam sollicitudin tempor id. Ut porttitor leo a diam sollicitudin tempor id. Sem viverra aliquet eget sit amet tellus cras adipiscing enim. Purus faucibus ornare suspendisse sed nisi lacus sed viverra. In aliquam sem fringilla ut. Tincidunt id aliquet risus feugiat in. Lacus laoreet non curabitur gravida arcu ac. Odio morbi quis commodo odio aenean sed adipiscing diam donec. Congue nisi vitae suscipit tellus mauris a diam maecenas. Ac odio tempor orci dapibus. Ut faucibus pulvinar elementum integer. Diam vulputate ut pharetra sit amet aliquam. Sagittis nisl rhoncus mattis rhoncus urna neque. Neque volutpat ac tincidunt vitae semper quis. Molestie a iaculis at erat pellentesque adipiscing. Convallis a cras semper auctor. Consectetur adipiscing elit duis tristique sollicitudin nibh. Massa tincidunt dui ut ornare. Condimentum vitae sapien pellentesque habitant morbi tristique senectus et netus. Convallis posuere morbi leo urna molestie. Diam ut venenatis tellus in metus. Maecenas pharetra convallis posuere morbi leo urna molestie at elementum. Ultrices vitae auctor eu augue ut lectus. Dui sapien eget mi proin. Aenean sed adipiscing diam donec adipiscing. Enim eu turpis egestas pretium aenean pharetra magna. Sit amet dictum sit amet justo donec. Semper quis lectus nulla at volutpat diam ut venenatis tellus. Aliquam eleifend mi in nulla posuere sollicitudin. Diam sollicitudin tempor id eu nisl nunc mi. Consectetur a erat nam at lectus urna. Cras pulvinar mattis nunc sed blandit libero volutpat sed. Pulvinar neque laoreet suspendisse interdum consectetur. Massa id neque aliquam vestibulum morbi blandit cursus. Blandit aliquam etiam erat velit scelerisque. Elementum nibh tellus molestie nunc. Auctor augue mauris augue neque gravida in fermentum et sollicitudin. Condimentum id venenatis a condimentum vitae. Viverra adipiscing at in tellus integer feugiat scelerisque varius morbi. Eget nunc lobortis mattis aliquam. Volutpat lacus laoreet non curabitur. ',
-                    authorName: 'John Doe',
-                    authorId: 1 // Representing authors ID
-                },
-                {
-                    id: 61,
-                    date: '06/06/2019',
-                    image: require(`@/assets/images/ps.jpg`),
-                    title: 'Project Scarlett 2020',
-                    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tristique magna sit amet purus. Leo a diam sollicitudin tempor id. Ut porttitor leo a diam sollicitudin tempor id. Sem viverra aliquet eget sit amet tellus cras adipiscing enim. Purus faucibus ornare suspendisse sed nisi lacus sed viverra. In aliquam sem fringilla ut. Tincidunt id aliquet risus feugiat in. Lacus laoreet non curabitur gravida arcu ac. Odio morbi quis commodo odio aenean sed adipiscing diam donec. Congue nisi vitae suscipit tellus mauris a diam maecenas. Ac odio tempor orci dapibus. Ut faucibus pulvinar elementum integer. Diam vulputate ut pharetra sit amet aliquam. Sagittis nisl rhoncus mattis rhoncus urna neque. Neque volutpat ac tincidunt vitae semper quis. Molestie a iaculis at erat pellentesque adipiscing. Convallis a cras semper auctor. Consectetur adipiscing elit duis tristique sollicitudin nibh. Massa tincidunt dui ut ornare. Condimentum vitae sapien pellentesque habitant morbi tristique senectus et netus. Convallis posuere morbi leo urna molestie. Diam ut venenatis tellus in metus. Maecenas pharetra convallis posuere morbi leo urna molestie at elementum. Ultrices vitae auctor eu augue ut lectus. Dui sapien eget mi proin. Aenean sed adipiscing diam donec adipiscing. Enim eu turpis egestas pretium aenean pharetra magna. Sit amet dictum sit amet justo donec. Semper quis lectus nulla at volutpat diam ut venenatis tellus. Aliquam eleifend mi in nulla posuere sollicitudin. Diam sollicitudin tempor id eu nisl nunc mi. Consectetur a erat nam at lectus urna. Cras pulvinar mattis nunc sed blandit libero volutpat sed. Pulvinar neque laoreet suspendisse interdum consectetur. Massa id neque aliquam vestibulum morbi blandit cursus. Blandit aliquam etiam erat velit scelerisque. Elementum nibh tellus molestie nunc. Auctor augue mauris augue neque gravida in fermentum et sollicitudin. Condimentum id venenatis a condimentum vitae. Viverra adipiscing at in tellus integer feugiat scelerisque varius morbi. Eget nunc lobortis mattis aliquam. Volutpat lacus laoreet non curabitur. ',
-                    authorName: 'Andrew Dough',
-                    authorId: 2 // Representing authors ID
-                },
-                {
-                    id: 62,
-                    date: '16/05/2019',
-                    image: require(`@/assets/images/cp-1.jpg`),
-                    title: 'Keanu in Cyberpunk',
-                    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tristique magna sit amet purus. Leo a diam sollicitudin tempor id. Ut porttitor leo a diam sollicitudin tempor id. Sem viverra aliquet eget sit amet tellus cras adipiscing enim. Purus faucibus ornare suspendisse sed nisi lacus sed viverra. In aliquam sem fringilla ut. Tincidunt id aliquet risus feugiat in. Lacus laoreet non curabitur gravida arcu ac. Odio morbi quis commodo odio aenean sed adipiscing diam donec. Congue nisi vitae suscipit tellus mauris a diam maecenas. Ac odio tempor orci dapibus. Ut faucibus pulvinar elementum integer. Diam vulputate ut pharetra sit amet aliquam. Sagittis nisl rhoncus mattis rhoncus urna neque. Neque volutpat ac tincidunt vitae semper quis. Molestie a iaculis at erat pellentesque adipiscing. Convallis a cras semper auctor. Consectetur adipiscing elit duis tristique sollicitudin nibh. Massa tincidunt dui ut ornare. Condimentum vitae sapien pellentesque habitant morbi tristique senectus et netus. Convallis posuere morbi leo urna molestie. Diam ut venenatis tellus in metus. Maecenas pharetra convallis posuere morbi leo urna molestie at elementum. Ultrices vitae auctor eu augue ut lectus. Dui sapien eget mi proin. Aenean sed adipiscing diam donec adipiscing. Enim eu turpis egestas pretium aenean pharetra magna. Sit amet dictum sit amet justo donec. Semper quis lectus nulla at volutpat diam ut venenatis tellus. Aliquam eleifend mi in nulla posuere sollicitudin. Diam sollicitudin tempor id eu nisl nunc mi. Consectetur a erat nam at lectus urna. Cras pulvinar mattis nunc sed blandit libero volutpat sed. Pulvinar neque laoreet suspendisse interdum consectetur. Massa id neque aliquam vestibulum morbi blandit cursus. Blandit aliquam etiam erat velit scelerisque. Elementum nibh tellus molestie nunc. Auctor augue mauris augue neque gravida in fermentum et sollicitudin. Condimentum id venenatis a condimentum vitae. Viverra adipiscing at in tellus integer feugiat scelerisque varius morbi. Eget nunc lobortis mattis aliquam. Volutpat lacus laoreet non curabitur. ',
-                    authorName: 'John Doe',
-                    authorId: 1 // Representing authors ID
-                }
-            ]
-        }
-    },
     // Components
     components: {
         SectionHeader
     },
     // Methods
     methods: {
+        ...mapActions('articles', ['getRecent3Articles']),
         // Convert Name of the article to link slug
         nameToLink: (articleName) => {
             return articleName.split(" ").join("-").toLowerCase();
         },
         shortenContent: (article) => {
             return article.slice(0, 100);
+        },
+        // Get Recent Articles
+        async getRecentArticles() {
+            await this.getRecent3Articles();
+        },
+        // Get Article Photo
+        getPhotoUrl(photo) {
+            return require(`@/assets/images/articles/${photo}`);
         }
+    },
+    // Computed
+    computed: {
+        articles() {
+            return this.$store.state.articles.recent3Articles ? this.$store.state.articles.recent3Articles : [];
+        }
+    },
+    // Computed Lifecycle Hook
+    created() {
+        this.getRecentArticles();
     }
 };
 </script>

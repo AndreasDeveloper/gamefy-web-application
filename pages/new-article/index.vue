@@ -51,6 +51,7 @@ export default {
       form.append('content', this.content);
       form.append('tags', this.tags);
       form.append('coverImage', this.coverImage);
+      form.append('createdAt', Date.now());
       const articleData = await this.addArticle(form);
       this.$refs.msg.innerHTML = 'Published';
     },

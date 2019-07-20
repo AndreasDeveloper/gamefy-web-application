@@ -54,6 +54,9 @@ export default {
         }
       ]
     }
+  },
+  fetch (context) {
+    return context.store.dispatch('auth/fetchData');
   }
 };
 </script>
