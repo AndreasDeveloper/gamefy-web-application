@@ -34,7 +34,7 @@
                 </div>
                 <span class="author-data-divider"></span>
                 <div class="genres-block">
-                    <h3 v-for="genre in articleGenre" :key="genre.id" class="genres-block__genre">{{ genre.g }}</h3>
+                    <h3 v-for="genre in articleGenre" :key="genre.id" class="genres-block__genre">{{ genre }}</h3>
                 </div>
             </div>
         </div>
@@ -42,6 +42,9 @@
 </template>
 
 <script>
+// Importing Vuex
+import { mapActions } from 'vuex';
+
 export default {
     name: 'ArticleComp',
     // Props
@@ -54,7 +57,19 @@ export default {
         authorImage: { type: String, required: true },
         authorBio: { type: String, required: true },
         articleGenre: { type: Array, required: false },
-        articleId: { type: Number, required: true }
+        articleId: { type: String, required: true }
+    },
+    // Methods
+    methods: {
+        ...mapActions('articles', ['getArticle']),
+        // Get Specific Article Method
+        async getSpecificArticle() {
+            const article = await this.getArticle(this.$route.params.name); 
+        }
+    },
+    // Created Lifecycle Hook
+    mounted() {
+        this.getSpecificArticle();
     }
 };
 </script>

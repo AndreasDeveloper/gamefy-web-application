@@ -54,7 +54,15 @@ exports.resizeArticlePhoto = catchAsync(async (req, res, next) => {
 exports.getAllArticles = factory.getAll(Article);
 
 // GET - Specific Article
-exports.getArticle = factory.getOne(Article);
+// exports.getArticle = factory.getOne(Article);
+exports.getArticle = async (req, res, next) => {
+    // Find by Name
+    const article = await Article.findOne({ slug: req.params.id });
+    res.status(200).json({
+        status: 'success',
+        article
+    });
+};
 
 // POST - New Article
 exports.setUserId = (req, res, next) => {
@@ -80,7 +88,8 @@ exports.getRecent3Articles = catchAsync(async (req, res, next) => {
                 title: { $first: '$title'},
                 content: { $first: '$content' },
                 coverImage: { $first: '$coverImage' },
-                author: { $push: '$user' }
+                author: { $push: '$user' },
+                id: { $first: '$_id' }
             }
         },
         {

@@ -12,7 +12,7 @@
 import TopNav from '@/components/navigation/TopNav';
 import SideNav from '@/components/navigation/SideNav';
 import axios from 'axios';
-
+// Importing Vuex
 import { mapActions } from 'vuex';
 
 export default {
@@ -20,17 +20,17 @@ export default {
     TopNav,
     SideNav
   },
-  // methods: {
-  // // Map Actions
-  // ...mapActions('auth', ['fetchData']),
-  //   async checkUser() {
-  //     const user = await this.fetchData();
-  //   },
-  // },
-  //  // Lifecycle Method - Created
-  //  created() {
-  //   this.checkUser();
-  // }
+  methods: {
+  // Map Actions
+  ...mapActions('auth', ['fetchData']),
+    async checkUser() {
+      const user = await this.fetchData();
+    }
+  },
+  // Lifecycle Method - Created
+  created() {
+    this.checkUser();
+  }
 }
 </script>
 

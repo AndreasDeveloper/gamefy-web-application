@@ -5,7 +5,7 @@
             <!-- Button Arrow Forward -->
             <div class="btn-arrForward"><i class="icon ion-ios-arrow-forward"></i></div>
             <!-- Recent Article Card -->
-            <div class="ra-card" v-for="article in articles" :key="article.id">
+            <div class="ra-card" v-for="article in articles.slice(0,3)" :key="article.id">
                 <div class="ra-card__bk"></div>
                 <img :src="getPhotoUrl(article.coverImage)" :alt="article.title" class="ra-card__image">
                 <div class="ra-card__content">
@@ -15,7 +15,7 @@
                 <div class="ra-card__buttons-wrap">
                     <a href="#" class="btn-1 btn-author">Author</a>
                     <no-ssr>
-                    <nuxt-link v-bind:to="`article/${nameToLink(article.title)}`" class="btn-1 btn-readMore ra-card__buttons-wrap__readMoreBtn">Read More</nuxt-link> 
+                    <nuxt-link :to="`articles/${nameToLink(article.title)}`" class="btn-1 btn-readMore ra-card__buttons-wrap__readMoreBtn">Read More</nuxt-link> 
                     </no-ssr>
                 </div>
             </div>
